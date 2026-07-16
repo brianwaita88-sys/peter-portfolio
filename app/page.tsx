@@ -20,7 +20,7 @@ export default function Home() {
             flexShrink: 0
           }}>
             <Image 
-              src="/peter-photo.jpg" 
+             src="/peter-portfolio/peter-photo.jpg"
               alt="Peter Ken Obbayi" 
               fill 
               style={{ objectFit: "cover" }} 
