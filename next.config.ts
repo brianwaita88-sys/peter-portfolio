@@ -1,3 +1,4 @@
+// Force update for static pages build
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
