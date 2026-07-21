@@ -87,14 +87,15 @@ export default function Home() {
     <main className="min-h-screen text-white font-sans" style={{ backgroundColor: '#0B0B0B' }}>
       
       {/* Header / Navbar */}
-      <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center border-b border-zinc-800">
+      <header className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center border-b border-zinc-800">
         <div className="flex items-center gap-3">
           <Image 
             src={peterLogo} 
             alt="Peter Ken Logo" 
-            className="w-10 h-10 object-contain"
+            style={{ width: 'auto', height: '36px', objectFit: 'contain' }}
+            priority
           />
-          <span className="font-bold text-lg tracking-wider uppercase hidden sm:inline text-white">
+          <span className="font-bold text-base tracking-wider uppercase hidden sm:inline text-white">
             Peter Ken Obbayi
           </span>
         </div>
@@ -108,17 +109,17 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative max-w-6xl mx-auto px-6 py-16 md:py-24 flex flex-col-reverse md:flex-row items-center justify-between gap-12" id="about">
+      <section className="relative max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col-reverse md:flex-row items-center justify-between gap-10" id="about">
         
         {/* Text Area */}
-        <div className="flex-1 text-center md:text-left space-y-6">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
+        <div className="flex-1 text-center md:text-left space-y-5">
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
             Peter Ken Obbayi
           </h1>
           <p className="text-base md:text-lg font-medium" style={{ color: '#D4AF37' }}>
             Digital Media Specialist • Journalist • Content Creator • Videographer • Video Editor • Music Producer
           </p>
-          <p className="text-gray-300 max-w-lg text-base md:text-lg leading-relaxed">
+          <p className="text-gray-300 max-w-lg text-sm md:text-base leading-relaxed">
             A passionate digital media professional and creative storyteller pursuing a B.A. in Journalism and Mass Communication at Kibabii University. I combine creativity, technology, and strategic thinking to help brands communicate effectively.
           </p>
           
@@ -126,14 +127,14 @@ export default function Home() {
           <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
             <a 
               href="#projects" 
-              className="px-6 py-3 font-bold rounded-lg shadow transition duration-200"
+              className="px-6 py-2.5 font-bold text-sm rounded-lg shadow transition duration-200"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
               View Projects
             </a>
             <a 
               href="#contact" 
-              className="px-6 py-3 border border-amber-500/40 text-white font-semibold rounded-lg shadow-sm transition duration-200"
+              className="px-6 py-2.5 border border-amber-500/40 text-white font-semibold text-sm rounded-lg shadow-sm transition duration-200"
               style={{ backgroundColor: '#1C1C1C' }}
             >
               Contact Me
@@ -141,13 +142,13 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Profile Image */}
+        {/* Profile Image (Fixed Dimensions) */}
         <div className="flex-1 flex justify-center">
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-zinc-800">
+          <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-2xl overflow-hidden shadow-xl border-2 border-zinc-800">
             <Image
               src={peterProfile}
               alt="Peter Ken Obbayi Profile Portrait"
-              className="w-full h-full object-cover"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               priority
             />
           </div>
@@ -156,18 +157,18 @@ export default function Home() {
       </section>
 
       {/* Core Services Section */}
-      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="services">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3 text-white">Core Services</h2>
-          <p className="text-gray-400">
+      <section className="py-14 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="services">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Core Services</h2>
+          <p className="text-gray-400 text-sm">
             End-to-end media production, content strategy, and digital creation solutions.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
           {coreServices.map((service, idx) => (
-            <div key={idx} className="p-6 rounded-xl border border-zinc-800 shadow-sm flex items-start gap-3" style={{ backgroundColor: '#1C1C1C' }}>
-              <span className="text-xl" style={{ color: '#D4AF37' }}>★</span>
+            <div key={idx} className="p-5 rounded-xl border border-zinc-800 shadow-sm flex items-start gap-3" style={{ backgroundColor: '#1C1C1C' }}>
+              <span className="text-lg" style={{ color: '#D4AF37' }}>★</span>
               <p className="font-semibold text-gray-200 text-sm leading-snug">{service}</p>
             </div>
           ))}
@@ -175,18 +176,18 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="skills">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3 text-white">Skills & Technical Tools</h2>
-          <p className="text-gray-400">
+      <section className="py-14 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="skills">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Skills & Technical Tools</h2>
+          <p className="text-gray-400 text-sm">
             Combining modern media software with strategic communication tools.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {skillCategories.map((category, idx) => (
             <div key={idx} className="p-6 rounded-xl border border-zinc-800 shadow-sm" style={{ backgroundColor: '#1C1C1C' }}>
-              <h3 className="text-xl font-bold mb-4" style={{ color: '#D4AF37' }}>{category.title}</h3>
+              <h3 className="text-lg font-bold mb-3" style={{ color: '#D4AF37' }}>{category.title}</h3>
               <ul className="space-y-2">
                 {category.skills.map((skill, sIdx) => (
                   <li key={sIdx} className="flex items-center gap-2 text-gray-300 text-sm">
@@ -200,23 +201,23 @@ export default function Home() {
       </section>
 
       {/* Career Vision, Values & Hobbies */}
-      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-zinc-800">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+      <section className="py-14 px-6 max-w-6xl mx-auto border-t border-zinc-800">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           
           {/* Vision & Core Values */}
-          <div className="p-8 rounded-xl border border-zinc-800 space-y-6" style={{ backgroundColor: '#1C1C1C' }}>
+          <div className="p-6 rounded-xl border border-zinc-800 space-y-5" style={{ backgroundColor: '#1C1C1C' }}>
             <div>
-              <h3 className="text-2xl font-bold mb-2 text-white">Career Vision</h3>
+              <h3 className="text-xl font-bold mb-2 text-white">Career Vision</h3>
               <p className="text-gray-300 text-sm leading-relaxed">
                 To become one of Africa's leading digital media innovators, empowering organizations and communities through impactful storytelling and technology.
               </p>
             </div>
             
             <div>
-              <h4 className="text-lg font-bold mb-3" style={{ color: '#D4AF37' }}>Core Values</h4>
+              <h4 className="text-base font-bold mb-2" style={{ color: '#D4AF37' }}>Core Values</h4>
               <div className="flex flex-wrap gap-2">
                 {coreValues.map((val, vIdx) => (
-                  <span key={vIdx} className="text-xs bg-zinc-800 px-3 py-1.5 rounded-md text-gray-200 font-medium border border-zinc-700">
+                  <span key={vIdx} className="text-xs bg-zinc-800 px-2.5 py-1 rounded-md text-gray-200 font-medium border border-zinc-700">
                     {val}
                   </span>
                 ))}
@@ -225,12 +226,12 @@ export default function Home() {
           </div>
 
           {/* Hobbies & Personal Interests */}
-          <div className="p-8 rounded-xl border border-zinc-800 space-y-4" style={{ backgroundColor: '#1C1C1C' }}>
-            <h3 className="text-2xl font-bold mb-2 text-white">Hobbies & Interests</h3>
-            <p className="text-gray-400 text-sm mb-4">
+          <div className="p-6 rounded-xl border border-zinc-800 space-y-3" style={{ backgroundColor: '#1C1C1C' }}>
+            <h3 className="text-xl font-bold text-white">Hobbies & Interests</h3>
+            <p className="text-gray-400 text-xs mb-3">
               Creative pursuits that fuel passion, inspiration, and community impact.
             </p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2">
               {hobbies.map((hobby, hIdx) => (
                 <li key={hIdx} className="flex items-center gap-2 text-gray-300 text-sm">
                   <span style={{ color: '#D4AF37' }}>◆</span> {hobby}
@@ -243,34 +244,34 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="projects">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3 text-white">Featured Projects & Media Work</h2>
-          <p className="text-gray-400">
+      <section className="py-14 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="projects">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Featured Projects & Media Work</h2>
+          <p className="text-gray-400 text-sm">
             A showcase of journalism, video editing, and digital media initiatives.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {projects.map((project, index) => (
             <div 
               key={index} 
               className="border border-zinc-800 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between transition hover:border-amber-500/50"
               style={{ backgroundColor: '#1C1C1C' }}
             >
-              <div className="p-6">
+              <div className="p-5">
                 <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#D4AF37' }}>
                   {project.category}
                 </span>
-                <h3 className="text-xl font-bold mt-2 mb-3 text-white">{project.title}</h3>
+                <h3 className="text-lg font-bold mt-1.5 mb-2 text-white">{project.title}</h3>
                 <p className="text-gray-300 text-sm mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1.5 mb-2">
                   {project.tags.map((tag, tIdx) => (
                     <span 
                       key={tIdx} 
-                      className="text-xs bg-zinc-800 px-2.5 py-1 rounded-md text-gray-300 font-medium"
+                      className="text-xs bg-zinc-800 px-2 py-0.5 rounded text-gray-300 font-medium"
                     >
                       {tag}
                     </span>
@@ -278,12 +279,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="p-6 pt-0">
+              <div className="p-5 pt-0">
                 <a 
                   href={project.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="block w-full text-center text-sm font-bold py-2.5 rounded-lg transition"
+                  className="block w-full text-center text-sm font-bold py-2 rounded-lg transition"
                   style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
                 >
                   View Document / Link 🔗
@@ -295,10 +296,10 @@ export default function Home() {
       </section>
 
       {/* Contact Section & Footer */}
-      <footer className="border-t border-zinc-800 py-16 text-center" style={{ backgroundColor: '#1C1C1C' }} id="contact">
-        <div className="max-w-4xl mx-auto px-6 space-y-6">
-          <h2 className="text-3xl font-bold text-white">Let's Work Together</h2>
-          <p className="text-gray-300 text-base max-w-lg mx-auto">
+      <footer className="border-t border-zinc-800 py-12 text-center" style={{ backgroundColor: '#1C1C1C' }} id="contact">
+        <div className="max-w-4xl mx-auto px-6 space-y-5">
+          <h2 className="text-2xl md:text-3xl font-bold text-white">Let's Work Together</h2>
+          <p className="text-gray-300 text-sm max-w-lg mx-auto">
             Have a project in mind or want to collaborate on stories and digital experiences? Get in touch today.
           </p>
           
@@ -306,7 +307,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
             <a 
               href="mailto:Obbayipeter050@gmail.com" 
-              className="w-full sm:w-auto px-8 py-3.5 font-bold rounded-lg shadow transition flex items-center justify-center gap-2 hover:opacity-90"
+              className="w-full sm:w-auto px-6 py-3 font-bold rounded-lg shadow transition flex items-center justify-center gap-2 hover:opacity-90 text-sm"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
               ✉️ Email: Obbayipeter050@gmail.com
@@ -314,14 +315,14 @@ export default function Home() {
             
             <a 
               href="tel:0707537823" 
-              className="w-full sm:w-auto px-8 py-3.5 border border-amber-500/40 text-white font-semibold rounded-lg shadow-sm transition hover:bg-zinc-800 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3 border border-amber-500/40 text-white font-semibold rounded-lg shadow-sm transition hover:bg-zinc-800 flex items-center justify-center gap-2 text-sm"
               style={{ backgroundColor: '#0B0B0B' }}
             >
               📞 Call: 0707 537823
             </a>
           </div>
 
-          <p className="text-xs text-gray-500 pt-10">
+          <p className="text-xs text-gray-500 pt-8">
             © {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.
           </p>
         </div>
