@@ -93,16 +93,16 @@ export default function Home() {
       <div className="absolute top-1/3 right-[-100px] w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
       <div className="absolute bottom-1/4 left-[-100px] w-96 h-96 bg-amber-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '4s' }}></div>
 
-      {/* Floating WhatsApp Quick-Booking Button */}
+      {/* Floating WhatsApp Quick Action Button */}
       <a 
-        href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about%20booking%20your%20services.`}
+        href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20visited%20your%20website%20and%20would%20like%20to%20connect.`}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 transition duration-300 hover:scale-105"
-        aria-label="Chat and book on WhatsApp"
+        aria-label="Contact on WhatsApp"
       >
         <span className="text-xl">💬</span>
-        <span className="hidden sm:inline text-sm">Book on WhatsApp</span>
+        <span className="hidden sm:inline text-sm">WhatsApp</span>
       </a>
 
       {/* Header / Navbar */}
@@ -154,12 +154,11 @@ export default function Home() {
               View Projects
             </a>
             <a 
-              href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20book%20a%20consultation%20service.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-lg transition duration-300 hover:scale-105 flex items-center gap-2"
+              href="#contact" 
+              className="px-6 py-2.5 text-white font-semibold text-sm rounded-lg transition duration-300 hover:bg-zinc-800 hover:scale-105"
+              style={{ backgroundColor: '#1C1C1C' }}
             >
-              💬 Book via WhatsApp
+              Contact Me
             </a>
           </div>
         </div>
@@ -183,12 +182,12 @@ export default function Home() {
 
       </section>
 
-      {/* Core Services Section with Direct WhatsApp Booking */}
+      {/* Core Services Section */}
       <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" id="services">
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Core Services & Booking</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Core Services</h2>
           <p className="text-gray-400 text-sm">
-            Select a service below to directly schedule and book a project on WhatsApp.
+            End-to-end media production, content strategy, and digital creation solutions.
           </p>
         </div>
 
@@ -201,12 +200,11 @@ export default function Home() {
               </div>
 
               <a
-                href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20book%20your%20service:%20"${encodeURIComponent(service)}"`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center text-xs font-bold py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition duration-200 flex items-center justify-center gap-1.5"
+                href="#contact"
+                className="w-full text-center text-xs font-bold py-2 rounded-lg transition duration-200 hover:opacity-90 flex items-center justify-center gap-1.5"
+                style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
               >
-                📅 Book Service on WhatsApp
+                📅 Booking
               </a>
             </div>
           ))}
@@ -342,15 +340,15 @@ export default function Home() {
             Have a project in mind or want to book services? Get in touch today.
           </p>
           
-          {/* Action Buttons for WhatsApp, Email & Phone */}
+          {/* Contact Methods: WhatsApp, Email & Phone */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
             <a 
-              href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20book%20a%20service.`}
+              href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20inquire%20about%20booking%20a%20service.`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3 font-bold rounded-lg shadow transition duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm bg-emerald-600 text-white hover:bg-emerald-500"
             >
-              💬 WhatsApp Booking
+              💬 WhatsApp
             </a>
 
             <a 
