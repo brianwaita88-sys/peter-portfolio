@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import peterProfile from "../public/peter-profile.jpg";
 import peterLogo from "../public/peter-logo.png";
@@ -88,15 +89,17 @@ export default function Home() {
       
       {/* Header / Navbar */}
       <header className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center border-b border-zinc-800">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 max-w-[200px]">
           <Image 
             src={peterLogo} 
             alt="Peter Ken Logo" 
-            style={{ width: 'auto', height: '36px', objectFit: 'contain' }}
+            width={40}
+            height={40}
+            style={{ width: '40px', height: 'auto', objectFit: 'contain' }}
             priority
           />
-          <span className="font-bold text-base tracking-wider uppercase hidden sm:inline text-white">
-            Peter Ken Obbayi
+          <span className="font-bold text-sm tracking-wider uppercase hidden sm:inline text-white">
+            Peter Ken
           </span>
         </div>
         <nav className="flex gap-6 text-sm font-semibold">
@@ -142,12 +145,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Profile Image (Fixed Dimensions) */}
-        <div className="flex-1 flex justify-center">
-          <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-2xl overflow-hidden shadow-xl border-2 border-zinc-800">
+        {/* Profile Image (Strictly Constrained) */}
+        <div className="flex-1 flex justify-center w-full max-w-[320px]">
+          <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-xl border-2 border-zinc-800">
             <Image
               src={peterProfile}
               alt="Peter Ken Obbayi Profile Portrait"
+              width={300}
+              height={300}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               priority
             />
