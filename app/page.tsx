@@ -49,9 +49,28 @@ const rotatingTitles = [
   "Photographer"
 ];
 
+// Support Hub Questions & Answers
+const supportFaqs = [
+  {
+    question: "How do I book Peter for a video or photography shoot?",
+    answer: "You can initiate a booking directly via WhatsApp or Email. We usually start with a brief concept discussion, agree on project deliverables and timelines, and confirm the date once a commitment deposit is made."
+  },
+  {
+    question: "What is the standard turnaround time for video editing & audio projects?",
+    answer: "Turnaround depends on project scope. Short video reels and social media edits take 24–48 hours, while full event videography, corporate packages, or audio mastering typically take 3–7 business days."
+  },
+  {
+    question: "How should I send large raw video/audio files for editing?",
+    answer: "You can upload raw assets directly to Google Drive, WeTransfer, or Dropbox and share the folder link via WhatsApp or Email."
+  },
+  {
+    question: "Does Peter offer custom packages for events and long-term retainer work?",
+    answer: "Yes! Custom media coverage, podcast production packages, and monthly content creation retainers are available upon request."
+  }
+];
+
 export default function Home() {
   const whatsappNumber = "254707537823";
-  // Peter's Shared Google Drive Folder Link
   const driveFolderLink = "https://drive.google.com/drive/folders/1T1pnLSosuZzPWkCvZGXqI7dcOThmAoPb?usp=sharing";
 
   // Intro Splash Overlay Control
@@ -62,6 +81,9 @@ export default function Home() {
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Support Hub Active Accordion Control
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   // Timed Splash Screen Effect
   useEffect(() => {
@@ -101,6 +123,10 @@ export default function Home() {
 
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, titleIndex]);
+
+  const toggleFaq = (idx: number) => {
+    setOpenFaq(openFaq === idx ? null : idx);
+  };
 
   return (
     <main className="min-h-screen text-white font-sans relative overflow-hidden" style={{ backgroundColor: '#0B0B0B' }}>
@@ -161,20 +187,18 @@ export default function Home() {
           <a href="#services" className="hover:text-amber-400 transition text-gray-300">Services</a>
           <a href="#skills" className="hover:text-amber-400 transition text-gray-300">Skills</a>
           <a href="#projects" className="hover:text-amber-400 transition text-gray-300">Projects</a>
+          <a href="#support" className="hover:text-amber-400 transition text-gray-300">Support Hub</a>
           <a href="#contact" className="hover:text-amber-400 transition text-gray-300">Contact</a>
         </nav>
       </header>
 
       {/* Hero Section */}
       <section className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col-reverse md:flex-row items-center justify-between gap-10" id="about">
-        
-        {/* Text Area */}
         <div className="flex-1 text-center md:text-left space-y-5">
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
             Peter Ken Obbayi
           </h1>
           
-          {/* Animated Cycling Title */}
           <p className="text-lg md:text-2xl font-bold min-h-[36px]" style={{ color: '#D4AF37' }}>
             I am a <span className="underline decoration-amber-500/50 underline-offset-4">{displayText}</span>
             <span className="animate-ping ml-1 text-white inline-block">|</span>
@@ -184,7 +208,6 @@ export default function Home() {
             A passionate digital media professional and creative storyteller pursuing a B.A. in Journalism and Mass Communication at Kibabii University. I combine creativity, technology, and strategic thinking to help brands communicate effectively.
           </p>
           
-          {/* Hero Buttons */}
           <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
             <a 
               href={driveFolderLink}
@@ -205,7 +228,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Profile Image Wrapper */}
         <div className="flex-1 flex justify-center items-center">
           <div 
             className="rounded-2xl overflow-hidden shadow-2xl transition duration-500 hover:scale-105"
@@ -221,7 +243,6 @@ export default function Home() {
             />
           </div>
         </div>
-
       </section>
 
       {/* Core Services Section */}
@@ -281,8 +302,6 @@ export default function Home() {
       {/* Career Vision, Values & Hobbies */}
       <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-          
-          {/* Vision & Core Values */}
           <div className="p-6 rounded-xl space-y-5" style={{ backgroundColor: '#1C1C1C' }}>
             <div>
               <h3 className="text-xl font-bold mb-2 text-white">Career Vision</h3>
@@ -303,7 +322,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hobbies & Personal Interests */}
           <div className="p-6 rounded-xl space-y-3" style={{ backgroundColor: '#1C1C1C' }}>
             <h3 className="text-xl font-bold text-white">Hobbies & Interests</h3>
             <p className="text-gray-400 text-xs mb-3">
@@ -317,11 +335,10 @@ export default function Home() {
               ))}
             </ul>
           </div>
-
         </div>
       </section>
 
-      {/* Single Google Drive Projects Showcase Section */}
+      {/* Google Drive Projects Showcase Section */}
       <section className="relative z-10 py-14 px-6 max-w-4xl mx-auto" id="projects">
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Media Projects & Portfolio Vault</h2>
@@ -366,6 +383,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Support Hub & FAQ Section */}
+      <section className="relative z-10 py-14 px-6 max-w-4xl mx-auto" id="support">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Support Hub & Client Care</h2>
+          <p className="text-gray-400 text-sm">
+            Everything you need to know about booking, project delivery, and working with Peter.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {supportFaqs.map((faq, idx) => (
+            <div 
+              key={idx} 
+              className="rounded-xl overflow-hidden transition border border-zinc-800/80"
+              style={{ backgroundColor: '#1C1C1C' }}
+            >
+              <button
+                onClick={() => toggleFaq(idx)}
+                className="w-full text-left p-5 font-bold text-sm md:text-base flex justify-between items-center text-white hover:text-amber-400 transition"
+              >
+                <span>{faq.question}</span>
+                <span className="text-amber-400 text-lg ml-4">
+                  {openFaq === idx ? "−" : "+"}
+                </span>
+              </button>
+              
+              {openFaq === idx && (
+                <div className="px-5 pb-5 text-gray-300 text-sm leading-relaxed border-t border-zinc-800/50 pt-3">
+                  {faq.answer}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Contact Section & Footer */}
       <footer className="relative z-10 py-16 text-center" style={{ backgroundColor: '#141414' }} id="contact">
         <div className="max-w-4xl mx-auto px-6 space-y-6">
@@ -374,7 +427,6 @@ export default function Home() {
             Have a project in mind or want to book services? Get in touch today.
           </p>
           
-          {/* Contact Methods: WhatsApp, Email & Phone */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
             <a 
               href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20inquire%20about%20booking%20a%20service.`}
