@@ -51,8 +51,8 @@ const rotatingTitles = [
 
 export default function Home() {
   const whatsappNumber = "254707537823";
-  // Main Google Drive Folder Link containing all media projects
-  const driveFolderLink = "https://drive.google.com/drive/folders/14ciq03BcBKoF7J7tfUuJaeQpo8PqF4ci?usp=sharing";
+  // Peter's Direct Google Drive Portfolio Link
+  const driveFolderLink = "https://drive.google.com/drive/u/0/mobile/my-drive?pli=1";
 
   // Intro Splash Overlay Control
   const [showSplash, setShowSplash] = useState(true);
@@ -187,7 +187,9 @@ export default function Home() {
           {/* Hero Buttons */}
           <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
             <a 
-              href="#projects" 
+              href={driveFolderLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-2.5 font-bold text-sm rounded-lg transition duration-300 hover:scale-105 shadow-lg shadow-amber-500/10"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
