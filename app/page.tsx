@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import peterProfile from "../public/peter-profile.jpg";
 import peterLogo from "../public/peter-logo.png";
@@ -89,17 +88,17 @@ export default function Home() {
       
       {/* Header / Navbar */}
       <header className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center border-b border-zinc-800">
-        <div className="flex items-center gap-3 max-w-[200px]">
+        <div className="flex items-center gap-3">
           <Image 
             src={peterLogo} 
             alt="Peter Ken Logo" 
-            width={40}
-            height={40}
-            style={{ width: '40px', height: 'auto', objectFit: 'contain' }}
+            width={120}
+            height={36}
+            style={{ width: 'auto', height: '36px', objectFit: 'contain' }}
             priority
           />
           <span className="font-bold text-sm tracking-wider uppercase hidden sm:inline text-white">
-            Peter Ken
+            Peter Ken Obbayi
           </span>
         </div>
         <nav className="flex gap-6 text-sm font-semibold">
@@ -145,14 +144,17 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Profile Image (Strictly Constrained) */}
-        <div className="flex-1 flex justify-center w-full max-w-[320px]">
-          <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-xl border-2 border-zinc-800">
+        {/* Profile Image - Strictly Constrained Wrapper */}
+        <div className="flex-1 flex justify-center items-center">
+          <div 
+            className="rounded-2xl overflow-hidden shadow-xl border-2 border-zinc-800"
+            style={{ width: '280px', height: '280px', maxWidth: '280px', maxHeight: '280px' }}
+          >
             <Image
               src={peterProfile}
               alt="Peter Ken Obbayi Profile Portrait"
-              width={300}
-              height={300}
+              width={280}
+              height={280}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               priority
             />
