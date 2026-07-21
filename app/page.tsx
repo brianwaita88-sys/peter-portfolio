@@ -1,5 +1,10 @@
 "use client";
 
+import AiAssistant from "./components/AiAssistant";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+// ... rest of imports
+
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import peterProfile from "../public/peter-profile.jpg";
@@ -457,9 +462,11 @@ export default function Home() {
           <p className="text-xs text-gray-500 pt-10">
             © {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.
           </p>
-        </div>
+       </div>
       </footer>
 
+      {/* AI Assistant Floating Widget */}
+      <AiAssistant />
     </main>
   );
 }
