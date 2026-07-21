@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+// Define the project structure
 interface Project {
   title: string;
   category: string;
@@ -46,32 +47,50 @@ const projects: Project[] = [
   },
 ];
 
+// Grouped skills
+const skillCategories = [
+  {
+    title: "Frontend & Web",
+    skills: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Tailwind CSS"],
+  },
+  {
+    title: "Media & Journalism",
+    skills: ["Investigative Reporting", "Documentary Production", "Broadcast Journalism", "Copywriting"],
+  },
+  {
+    title: "Tools & Software",
+    skills: ["DaVinci Resolve", "Adobe Premiere Pro", "FL Studio", "Git", "GitHub", "VS Code"],
+  },
+];
+
 export default function Home() {
-  export default function Home() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
       
       {/* Header / Navbar */}
-      <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
+      <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
         <div className="flex items-center gap-3">
           <img 
-            src="./peter-logo.png" 
+            src={`${basePath}/peter-logo.png`} 
             alt="Peter Ken Logo" 
-            className="w-11 h-11 object-contain"
+            className="w-10 h-10 object-contain"
           />
-          <span className="font-bold text-xl tracking-wider uppercase hidden sm:inline">
+          <span className="font-bold text-lg tracking-wider uppercase hidden sm:inline">
             Peter Ken
           </span>
         </div>
         <nav className="flex gap-6 text-sm font-semibold">
           <a href="#about" className="hover:text-amber-500 transition">About</a>
+          <a href="#skills" className="hover:text-amber-500 transition">Skills</a>
           <a href="#projects" className="hover:text-amber-500 transition">Projects</a>
           <a href="#contact" className="hover:text-amber-500 transition">Contact</a>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section className="relative max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col-reverse md:flex-row items-center justify-between gap-12" id="about">
+      <section className="relative max-w-6xl mx-auto px-6 py-16 md:py-24 flex flex-col-reverse md:flex-row items-center justify-between gap-12" id="about">
         
         {/* Text Area */}
         <div className="flex-1 text-center md:text-left space-y-6">
@@ -82,9 +101,10 @@ export default function Home() {
             Journalist • Videographer • Web Developer • Media Creator
           </p>
           <p className="text-gray-600 dark:text-gray-300 max-w-lg text-base md:text-lg leading-relaxed">
-            Creating cinematic stories and modern digital experiences. Bridging the gap between powerful journalism, media production, and functional web design.
+            Creating cinematic stories and modern digital experiences. Bridging the gap between powerful journalism, video creation, and modern web applications.
           </p>
           
+          {/* Hero Buttons */}
           <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
             <a 
               href="#projects" 
@@ -105,7 +125,7 @@ export default function Home() {
         <div className="flex-1 flex justify-center">
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white dark:border-gray-800">
             <img
-              src="./peter-profile.jpg"
+              src={`${basePath}/peter-profile.jpg`}
               alt="Peter Ken Obbayi Profile Portrait"
               className="w-full h-full object-cover"
             />
@@ -113,22 +133,38 @@ export default function Home() {
         </div>
 
       </section>
-              fill
-              className="object-cover"
-              priority
-              unoptimized
-            />
-          </div>
+
+      {/* Skills Section */}
+      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-gray-200 dark:border-gray-800" id="skills">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-3">Core Skills & Expertise</h2>
+          <p className="text-gray-600 dark:text-gray-400">
+            A comprehensive overview of my creative and technical capabilities.
+          </p>
         </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {skillCategories.map((category, idx) => (
+            <div key={idx} className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+              <h3 className="text-xl font-bold mb-4 text-amber-500">{category.title}</h3>
+              <ul className="space-y-2">
+                {category.skills.map((skill, sIdx) => (
+                  <li key={sIdx} className="flex items-center gap-2 text-gray-700 dark:text-gray-300 text-sm">
+                    <span className="text-amber-500">✓</span> {skill}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Projects Section */}
       <section className="py-16 px-6 max-w-6xl mx-auto border-t border-gray-200 dark:border-gray-800" id="projects">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3">Featured Projects & Media Work</h2>
+          <h2 className="text-3xl font-bold mb-3">Featured Projects & Work</h2>
           <p className="text-gray-600 dark:text-gray-400">
-            A showcase of journalism, video editing, and digital creation.
+            A showcase of journalism, video editing, and digital media initiatives.
           </p>
         </div>
 
@@ -173,9 +209,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 dark:border-gray-800 py-8 text-center text-sm text-gray-500" id="contact">
-        <p>© {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.</p>
+      {/* Contact Section & Footer */}
+      <footer className="border-t border-gray-200 dark:border-gray-800 py-12 bg-white dark:bg-gray-800 text-center" id="contact">
+        <div className="max-w-4xl mx-auto px-6 space-y-4">
+          <h2 className="text-2xl font-bold">Let's Work Together</h2>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">
+            Have a project in mind or want to collaborate on stories and digital experiences?
+          </p>
+          <div className="pt-2">
+            <a 
+              href="mailto:contact@peterken.com" 
+              className="inline-block px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg shadow transition"
+            >
+              Get In Touch
+            </a>
+          </div>
+          <p className="text-xs text-gray-400 pt-8">
+            © {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.
+          </p>
+        </div>
       </footer>
 
     </main>
