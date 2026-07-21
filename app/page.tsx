@@ -5,52 +5,6 @@ import { useState, useEffect } from "react";
 import peterProfile from "../public/peter-profile.jpg";
 import peterLogo from "../public/peter-logo.png";
 
-interface Project {
-  title: string;
-  category: string;
-  description: string;
-  tags: string[];
-  link: string;
-}
-
-const projects: Project[] = [
-  {
-    title: "Media Production & Portfolio Asset 1",
-    category: "Journalism / Videography",
-    description: "Featured media coverage and project documentation for Peter Ken Obbayi's creative work.",
-    tags: ["Journalism", "Video Production", "Kibabii University"],
-    link: "https://drive.google.com/file/d/14ciq03BcBKoF7J7tfUuJaeQpo8PqF4ci/view?usp=sharing",
-  },
-  {
-    title: "Digital Storytelling & Journalism Feature 2",
-    category: "Media Coverage",
-    description: "In-depth article and broadcast documentation showcasing digital media storytelling.",
-    tags: ["Media Strategy", "Editing", "Adobe Premiere Pro"],
-    link: "https://drive.google.com/file/d/11fXlkPaJcxo12OCYCcsYFez9oCl3Lr02/view?usp=sharing",
-  },
-  {
-    title: "Corporate Video & Photography Reel 3",
-    category: "Videography",
-    description: "Professional camera work, livestreaming, and cinematography portfolio sample.",
-    tags: ["Cinematography", "DaVinci Resolve", "Videography"],
-    link: "https://drive.google.com/file/d/1NY8N7KqV8W7Ig3yzHAPl96zeD0h8wqxn/view?usp=sharing",
-  },
-  {
-    title: "Web & Content Creation Project 4",
-    category: "Web & Digital Content",
-    description: "Integration of modern web tools with creative media distribution for audience engagement.",
-    tags: ["Web Development", "Content Strategy", "Digital Media"],
-    link: "https://drive.google.com/file/d/1goaxAJAifjvK8jjDDjOWKp_b5AuxVdTA/view?usp=sharing",
-  },
-  {
-    title: "Audio & Media Production Project 5",
-    category: "Audio / Broadcast",
-    description: "Sound design and audio-visual post-production compilation.",
-    tags: ["Audio Editing", "FL Studio", "Post-Production"],
-    link: "https://drive.google.com/file/d/1o9PqGO1-ADNo9SGVNGiVvgq6tPmqO7q4/view?usp=sharing",
-  },
-];
-
 const coreServices = [
   "Corporate Video Production & Videography",
   "Video Editing & Color Grading",
@@ -97,6 +51,8 @@ const rotatingTitles = [
 
 export default function Home() {
   const whatsappNumber = "254707537823";
+  // Main Google Drive Folder Link containing all media projects
+  const driveFolderLink = "https://drive.google.com/drive/folders/14ciq03BcBKoF7J7tfUuJaeQpo8PqF4ci?usp=sharing";
 
   // Intro Splash Overlay Control
   const [showSplash, setShowSplash] = useState(true);
@@ -111,11 +67,11 @@ export default function Home() {
   useEffect(() => {
     const fadeTimer = setTimeout(() => {
       setFadeSplash(true);
-    }, 2200); // Start fade-out at 2.2 seconds
+    }, 2200);
 
     const hideTimer = setTimeout(() => {
       setShowSplash(false);
-    }, 2800); // Completely unmount overlay at 2.8 seconds
+    }, 2800);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -235,7 +191,7 @@ export default function Home() {
               className="px-6 py-2.5 font-bold text-sm rounded-lg transition duration-300 hover:scale-105 shadow-lg shadow-amber-500/10"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
-              View Projects
+              View Portfolio Drive
             </a>
             <a 
               href="#contact" 
@@ -363,56 +319,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" id="projects">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Featured Projects & Media Work</h2>
+      {/* Single Google Drive Projects Showcase Section */}
+      <section className="relative z-10 py-14 px-6 max-w-4xl mx-auto" id="projects">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Media Projects & Portfolio Vault</h2>
           <p className="text-gray-400 text-sm">
-            A showcase of journalism, video editing, and digital media initiatives.
+            Access the complete collection of journalism features, corporate videography reels, digital audio edits, and media content assets.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-          {projects.map((project, index) => (
-            <div 
-              key={index} 
-              className="rounded-xl overflow-hidden shadow-lg flex flex-col justify-between transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/10"
-              style={{ backgroundColor: '#1C1C1C' }}
-            >
-              <div className="p-6">
-                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#D4AF37' }}>
-                  {project.category}
-                </span>
-                <h3 className="text-lg font-bold mt-2 mb-3 text-white">{project.title}</h3>
-                <p className="text-gray-300 text-sm mb-5 leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tIdx) => (
-                    <span 
-                      key={tIdx} 
-                      className="text-xs px-2.5 py-1 rounded text-gray-300 font-medium"
-                      style={{ backgroundColor: '#2A2A2A' }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+        <div className="p-8 rounded-2xl shadow-2xl text-center space-y-6 transition duration-300 hover:shadow-amber-500/10" style={{ backgroundColor: '#1C1C1C' }}>
+          <div className="inline-block p-4 rounded-full bg-amber-500/10 mb-2">
+            <span className="text-4xl">📁</span>
+          </div>
 
-              <div className="p-6 pt-0">
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="block w-full text-center text-sm font-bold py-2.5 rounded-lg transition duration-200 hover:opacity-90"
-                  style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
-                >
-                  View Document / Link 🔗
-                </a>
-              </div>
-            </div>
-          ))}
+          <div className="space-y-2">
+            <h3 className="text-xl md:text-2xl font-bold text-white">
+              Official Media & Project Drive
+            </h3>
+            <p className="text-gray-300 text-sm max-w-lg mx-auto leading-relaxed">
+              Includes full video reels, high-resolution photography, audio production projects, and journalism documentations.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2 pt-2">
+            <span className="text-xs px-3 py-1 rounded bg-zinc-800 text-gray-300 font-medium">Videography</span>
+            <span className="text-xs px-3 py-1 rounded bg-zinc-800 text-gray-300 font-medium">Journalism</span>
+            <span className="text-xs px-3 py-1 rounded bg-zinc-800 text-gray-300 font-medium">Audio Editing</span>
+            <span className="text-xs px-3 py-1 rounded bg-zinc-800 text-gray-300 font-medium">Content Strategy</span>
+          </div>
+
+          <div className="pt-4">
+            <a 
+              href={driveFolderLink} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 font-bold text-sm md:text-base rounded-xl transition duration-300 hover:scale-105 shadow-xl shadow-amber-500/10"
+              style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
+            >
+              <span>Explore Google Drive Portfolio</span>
+              <span>📂</span>
+            </a>
+          </div>
         </div>
       </section>
 
