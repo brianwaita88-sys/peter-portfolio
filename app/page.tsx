@@ -47,19 +47,17 @@ const projects: Project[] = [
 ];
 
 export default function Home() {
+  export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       
       {/* Header / Navbar */}
       <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <Image 
-            src="/peter-logo.png" 
+          <img 
+            src="./peter-logo.png" 
             alt="Peter Ken Logo" 
-            width={45} 
-            height={45} 
-            className="object-contain"
-            unoptimized
+            className="w-11 h-11 object-contain"
           />
           <span className="font-bold text-xl tracking-wider uppercase hidden sm:inline">
             Peter Ken
@@ -106,9 +104,15 @@ export default function Home() {
         {/* Profile Image */}
         <div className="flex-1 flex justify-center">
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white dark:border-gray-800">
-            <Image
-              src="/peter-profile.jpg"
+            <img
+              src="./peter-profile.jpg"
               alt="Peter Ken Obbayi Profile Portrait"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+      </section>
               fill
               className="object-cover"
               priority
