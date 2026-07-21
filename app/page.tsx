@@ -1,12 +1,8 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import AiAssistant from "./components/AiAssistant";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-// ... rest of imports
-
-import Image from "next/image";
-import { useState, useEffect } from "react";
 import peterProfile from "../public/peter-profile.jpg";
 import peterLogo from "../public/peter-logo.png";
 
@@ -54,7 +50,6 @@ const rotatingTitles = [
   "Photographer"
 ];
 
-// Support Hub Questions & Answers
 const supportFaqs = [
   {
     question: "How do I book Peter for a video or photography shoot?",
@@ -78,19 +73,15 @@ export default function Home() {
   const whatsappNumber = "254707537823";
   const driveFolderLink = "https://drive.google.com/drive/folders/1T1pnLSosuZzPWkCvZGXqI7dcOThmAoPb?usp=sharing";
 
-  // Intro Splash Overlay Control
   const [showSplash, setShowSplash] = useState(true);
   const [fadeSplash, setFadeSplash] = useState(false);
 
-  // Cycling Title Control
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Support Hub Active Accordion Control
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Timed Splash Screen Effect
   useEffect(() => {
     const fadeTimer = setTimeout(() => {
       setFadeSplash(true);
@@ -106,7 +97,6 @@ export default function Home() {
     };
   }, []);
 
-  // Typewriter Title Cycling Effect
   useEffect(() => {
     const currentFullTitle = rotatingTitles[titleIndex];
     const typingSpeed = isDeleting ? 40 : 80;
@@ -155,12 +145,11 @@ export default function Home() {
         </div>
       )}
 
-      {/* Animated Ambient Glows */}
+      {/* Background Glow Effects */}
       <div className="absolute top-[-100px] left-[-100px] w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
       <div className="absolute top-1/3 right-[-100px] w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute bottom-1/4 left-[-100px] w-96 h-96 bg-amber-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '4s' }}></div>
 
-      {/* Floating WhatsApp Quick Action Button */}
+      {/* Floating WhatsApp Quick Button */}
       <a 
         href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20visited%20your%20website%20and%20would%20like%20to%20connect.`}
         target="_blank"
@@ -172,7 +161,7 @@ export default function Home() {
         <span className="hidden sm:inline text-sm">WhatsApp</span>
       </a>
 
-      {/* Header / Navbar */}
+      {/* Navbar */}
       <header className="relative z-10 max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <Image 
@@ -250,7 +239,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Core Services Section */}
+      {/* Services Section */}
       <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" id="services">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Core Services</h2>
@@ -304,7 +293,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Career Vision, Values & Hobbies */}
+      {/* Vision & Values */}
       <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           <div className="p-6 rounded-xl space-y-5" style={{ backgroundColor: '#1C1C1C' }}>
@@ -343,7 +332,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Google Drive Projects Showcase Section */}
+      {/* Projects Showcase */}
       <section className="relative z-10 py-14 px-6 max-w-4xl mx-auto" id="projects">
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Media Projects & Portfolio Vault</h2>
@@ -388,7 +377,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Support Hub & FAQ Section */}
+      {/* Support Hub Section */}
       <section className="relative z-10 py-14 px-6 max-w-4xl mx-auto" id="support">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Support Hub & Client Care</h2>
@@ -424,7 +413,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section & Footer */}
+      {/* Footer */}
       <footer className="relative z-10 py-16 text-center" style={{ backgroundColor: '#141414' }} id="contact">
         <div className="max-w-4xl mx-auto px-6 space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-white">Let's Work Together</h2>
@@ -462,11 +451,12 @@ export default function Home() {
           <p className="text-xs text-gray-500 pt-10">
             © {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.
           </p>
-       </div>
+        </div>
       </footer>
 
       {/* AI Assistant Floating Widget */}
       <AiAssistant />
+
     </main>
   );
 }
