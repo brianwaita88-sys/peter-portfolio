@@ -87,7 +87,7 @@ export default function Home() {
     <main className="min-h-screen text-white font-sans" style={{ backgroundColor: '#0B0B0B' }}>
       
       {/* Header / Navbar */}
-      <header className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center border-b border-zinc-800">
+      <header className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <Image 
             src={peterLogo} 
@@ -129,14 +129,14 @@ export default function Home() {
           <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
             <a 
               href="#projects" 
-              className="px-6 py-2.5 font-bold text-sm rounded-lg shadow transition duration-200"
+              className="px-6 py-2.5 font-bold text-sm rounded-lg transition duration-200 hover:opacity-90"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
               View Projects
             </a>
             <a 
               href="#contact" 
-              className="px-6 py-2.5 border border-amber-500/40 text-white font-semibold text-sm rounded-lg shadow-sm transition duration-200"
+              className="px-6 py-2.5 text-white font-semibold text-sm rounded-lg transition duration-200 hover:bg-zinc-800"
               style={{ backgroundColor: '#1C1C1C' }}
             >
               Contact Me
@@ -144,10 +144,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Profile Image - Strictly Constrained Wrapper */}
+        {/* Profile Image Wrapper */}
         <div className="flex-1 flex justify-center items-center">
           <div 
-            className="rounded-2xl overflow-hidden shadow-xl border-2 border-zinc-800"
+            className="rounded-2xl overflow-hidden shadow-2xl"
             style={{ width: '280px', height: '280px', maxWidth: '280px', maxHeight: '280px' }}
           >
             <Image
@@ -164,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* Core Services Section */}
-      <section className="py-14 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="services">
+      <section className="py-14 px-6 max-w-6xl mx-auto" id="services">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Core Services</h2>
           <p className="text-gray-400 text-sm">
@@ -174,7 +174,7 @@ export default function Home() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
           {coreServices.map((service, idx) => (
-            <div key={idx} className="p-5 rounded-xl border border-zinc-800 shadow-sm flex items-start gap-3" style={{ backgroundColor: '#1C1C1C' }}>
+            <div key={idx} className="p-5 rounded-xl flex items-start gap-3" style={{ backgroundColor: '#1C1C1C' }}>
               <span className="text-lg" style={{ color: '#D4AF37' }}>★</span>
               <p className="font-semibold text-gray-200 text-sm leading-snug">{service}</p>
             </div>
@@ -183,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-14 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="skills">
+      <section className="py-14 px-6 max-w-6xl mx-auto" id="skills">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Skills & Technical Tools</h2>
           <p className="text-gray-400 text-sm">
@@ -193,7 +193,7 @@ export default function Home() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {skillCategories.map((category, idx) => (
-            <div key={idx} className="p-6 rounded-xl border border-zinc-800 shadow-sm" style={{ backgroundColor: '#1C1C1C' }}>
+            <div key={idx} className="p-6 rounded-xl" style={{ backgroundColor: '#1C1C1C' }}>
               <h3 className="text-lg font-bold mb-3" style={{ color: '#D4AF37' }}>{category.title}</h3>
               <ul className="space-y-2">
                 {category.skills.map((skill, sIdx) => (
@@ -208,11 +208,11 @@ export default function Home() {
       </section>
 
       {/* Career Vision, Values & Hobbies */}
-      <section className="py-14 px-6 max-w-6xl mx-auto border-t border-zinc-800">
+      <section className="py-14 px-6 max-w-6xl mx-auto">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           
           {/* Vision & Core Values */}
-          <div className="p-6 rounded-xl border border-zinc-800 space-y-5" style={{ backgroundColor: '#1C1C1C' }}>
+          <div className="p-6 rounded-xl space-y-5" style={{ backgroundColor: '#1C1C1C' }}>
             <div>
               <h3 className="text-xl font-bold mb-2 text-white">Career Vision</h3>
               <p className="text-gray-300 text-sm leading-relaxed">
@@ -221,10 +221,10 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="text-base font-bold mb-2" style={{ color: '#D4AF37' }}>Core Values</h4>
+              <h4 className="text-base font-bold mb-3" style={{ color: '#D4AF37' }}>Core Values</h4>
               <div className="flex flex-wrap gap-2">
                 {coreValues.map((val, vIdx) => (
-                  <span key={vIdx} className="text-xs bg-zinc-800 px-2.5 py-1 rounded-md text-gray-200 font-medium border border-zinc-700">
+                  <span key={vIdx} className="text-xs px-3 py-1.5 rounded-md text-gray-200 font-medium" style={{ backgroundColor: '#2A2A2A' }}>
                     {val}
                   </span>
                 ))}
@@ -233,7 +233,7 @@ export default function Home() {
           </div>
 
           {/* Hobbies & Personal Interests */}
-          <div className="p-6 rounded-xl border border-zinc-800 space-y-3" style={{ backgroundColor: '#1C1C1C' }}>
+          <div className="p-6 rounded-xl space-y-3" style={{ backgroundColor: '#1C1C1C' }}>
             <h3 className="text-xl font-bold text-white">Hobbies & Interests</h3>
             <p className="text-gray-400 text-xs mb-3">
               Creative pursuits that fuel passion, inspiration, and community impact.
@@ -251,7 +251,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-14 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="projects">
+      <section className="py-14 px-6 max-w-6xl mx-auto" id="projects">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Featured Projects & Media Work</h2>
           <p className="text-gray-400 text-sm">
@@ -263,22 +263,23 @@ export default function Home() {
           {projects.map((project, index) => (
             <div 
               key={index} 
-              className="border border-zinc-800 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between transition hover:border-amber-500/50"
+              className="rounded-xl overflow-hidden shadow-lg flex flex-col justify-between transition hover:-translate-y-1"
               style={{ backgroundColor: '#1C1C1C' }}
             >
-              <div className="p-5">
+              <div className="p-6">
                 <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#D4AF37' }}>
                   {project.category}
                 </span>
-                <h3 className="text-lg font-bold mt-1.5 mb-2 text-white">{project.title}</h3>
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                <h3 className="text-lg font-bold mt-2 mb-3 text-white">{project.title}</h3>
+                <p className="text-gray-300 text-sm mb-5 leading-relaxed">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-1.5 mb-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tIdx) => (
                     <span 
                       key={tIdx} 
-                      className="text-xs bg-zinc-800 px-2 py-0.5 rounded text-gray-300 font-medium"
+                      className="text-xs px-2.5 py-1 rounded text-gray-300 font-medium"
+                      style={{ backgroundColor: '#2A2A2A' }}
                     >
                       {tag}
                     </span>
@@ -286,12 +287,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="p-5 pt-0">
+              <div className="p-6 pt-0">
                 <a 
                   href={project.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="block w-full text-center text-sm font-bold py-2 rounded-lg transition"
+                  className="block w-full text-center text-sm font-bold py-2.5 rounded-lg transition hover:opacity-90"
                   style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
                 >
                   View Document / Link 🔗
@@ -303,10 +304,10 @@ export default function Home() {
       </section>
 
       {/* Contact Section & Footer */}
-      <footer className="border-t border-zinc-800 py-12 text-center" style={{ backgroundColor: '#1C1C1C' }} id="contact">
-        <div className="max-w-4xl mx-auto px-6 space-y-5">
+      <footer className="py-16 text-center" style={{ backgroundColor: '#141414' }} id="contact">
+        <div className="max-w-4xl mx-auto px-6 space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-white">Let's Work Together</h2>
-          <p className="text-gray-300 text-sm max-w-lg mx-auto">
+          <p className="text-gray-300 text-sm max-w-lg mx-auto leading-relaxed">
             Have a project in mind or want to collaborate on stories and digital experiences? Get in touch today.
           </p>
           
@@ -322,14 +323,14 @@ export default function Home() {
             
             <a 
               href="tel:0707537823" 
-              className="w-full sm:w-auto px-6 py-3 border border-amber-500/40 text-white font-semibold rounded-lg shadow-sm transition hover:bg-zinc-800 flex items-center justify-center gap-2 text-sm"
-              style={{ backgroundColor: '#0B0B0B' }}
+              className="w-full sm:w-auto px-6 py-3 text-white font-semibold rounded-lg shadow transition hover:bg-zinc-800 flex items-center justify-center gap-2 text-sm"
+              style={{ backgroundColor: '#262626' }}
             >
               📞 Call: 0707 537823
             </a>
           </div>
 
-          <p className="text-xs text-gray-500 pt-8">
+          <p className="text-xs text-gray-500 pt-10">
             © {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.
           </p>
         </div>
