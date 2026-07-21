@@ -2,7 +2,6 @@ import Image from "next/image";
 import peterProfile from "../public/peter-profile.jpg";
 import peterLogo from "../public/peter-logo.png";
 
-// Define the project structure
 interface Project {
   title: string;
   category: string;
@@ -49,20 +48,38 @@ const projects: Project[] = [
   },
 ];
 
-// Grouped skills
+const coreServices = [
+  "Corporate Video Production & Videography",
+  "Video Editing & Color Grading",
+  "Digital Marketing & Social Media Strategy",
+  "Branding, Content Strategy & YouTube Growth",
+  "Photography, Livestreaming & Podcast Production",
+  "Music Production, DJ Services & Creative Consulting",
+];
+
 const skillCategories = [
   {
-    title: "Frontend & Web",
-    skills: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Tailwind CSS"],
+    title: "Media Production & Editing",
+    skills: ["Videography", "Video Editing", "Photography", "Adobe Premiere Pro", "DaVinci Resolve", "OBS Studio"],
   },
   {
-    title: "Media & Journalism",
-    skills: ["Investigative Reporting", "Documentary Production", "Broadcast Journalism", "Copywriting"],
+    title: "Journalism & Marketing",
+    skills: ["Storytelling & Script Writing", "Journalism", "Digital Marketing & SEO", "Branding & Strategy", "Canva", "AI Tools"],
   },
   {
-    title: "Tools & Software",
-    skills: ["DaVinci Resolve", "Adobe Premiere Pro", "FL Studio", "Git", "GitHub", "VS Code"],
+    title: "Audio & Web Development",
+    skills: ["Music Production", "FL Studio", "Podcast Production", "HTML5 / CSS3 / JavaScript", "React & Next.js", "Git & GitHub"],
   },
+];
+
+const coreValues = [
+  "Integrity", "Creativity", "Professionalism", "Innovation", 
+  "Excellence", "Accountability", "Teamwork", "Continuous Learning"
+];
+
+const hobbies = [
+  "Music Production & DJ Mixing", "Drumming", "Photography & Videography", 
+  "Storytelling & AI Research", "Entrepreneurship", "Church Media Ministry", "Youth Mentorship"
 ];
 
 export default function Home() {
@@ -78,11 +95,12 @@ export default function Home() {
             className="w-10 h-10 object-contain"
           />
           <span className="font-bold text-lg tracking-wider uppercase hidden sm:inline text-white">
-            Peter Ken
+            Peter Ken Obbayi
           </span>
         </div>
         <nav className="flex gap-6 text-sm font-semibold">
           <a href="#about" className="hover:text-amber-400 transition text-gray-300">About</a>
+          <a href="#services" className="hover:text-amber-400 transition text-gray-300">Services</a>
           <a href="#skills" className="hover:text-amber-400 transition text-gray-300">Skills</a>
           <a href="#projects" className="hover:text-amber-400 transition text-gray-300">Projects</a>
           <a href="#contact" className="hover:text-amber-400 transition text-gray-300">Contact</a>
@@ -97,11 +115,11 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
             Peter Ken Obbayi
           </h1>
-          <p className="text-lg md:text-xl font-medium" style={{ color: '#D4AF37' }}>
-            Journalist • Videographer • Web Developer • Media Creator
+          <p className="text-base md:text-lg font-medium" style={{ color: '#D4AF37' }}>
+            Digital Media Specialist • Journalist • Content Creator • Videographer • Video Editor • Music Producer
           </p>
           <p className="text-gray-300 max-w-lg text-base md:text-lg leading-relaxed">
-            Creating cinematic stories and modern digital experiences. Bridging the gap between powerful journalism, video creation, and modern web applications.
+            A passionate digital media professional and creative storyteller pursuing a B.A. in Journalism and Mass Communication at Kibabii University. I combine creativity, technology, and strategic thinking to help brands communicate effectively.
           </p>
           
           {/* Hero Buttons */}
@@ -137,12 +155,31 @@ export default function Home() {
 
       </section>
 
+      {/* Core Services Section */}
+      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="services">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-3 text-white">Core Services</h2>
+          <p className="text-gray-400">
+            End-to-end media production, content strategy, and digital creation solutions.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {coreServices.map((service, idx) => (
+            <div key={idx} className="p-6 rounded-xl border border-zinc-800 shadow-sm flex items-start gap-3" style={{ backgroundColor: '#1C1C1C' }}>
+              <span className="text-xl" style={{ color: '#D4AF37' }}>★</span>
+              <p className="font-semibold text-gray-200 text-sm leading-snug">{service}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Skills Section */}
       <section className="py-16 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="skills">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3 text-white">Core Skills & Expertise</h2>
+          <h2 className="text-3xl font-bold mb-3 text-white">Skills & Technical Tools</h2>
           <p className="text-gray-400">
-            A comprehensive overview of my creative and technical capabilities.
+            Combining modern media software with strategic communication tools.
           </p>
         </div>
 
@@ -162,10 +199,53 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Career Vision, Values & Hobbies */}
+      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-zinc-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          {/* Vision & Core Values */}
+          <div className="p-8 rounded-xl border border-zinc-800 space-y-6" style={{ backgroundColor: '#1C1C1C' }}>
+            <div>
+              <h3 className="text-2xl font-bold mb-2 text-white">Career Vision</h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                To become one of Africa's leading digital media innovators, empowering organizations and communities through impactful storytelling and technology.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-bold mb-3" style={{ color: '#D4AF37' }}>Core Values</h4>
+              <div className="flex flex-wrap gap-2">
+                {coreValues.map((val, vIdx) => (
+                  <span key={vIdx} className="text-xs bg-zinc-800 px-3 py-1.5 rounded-md text-gray-200 font-medium border border-zinc-700">
+                    {val}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Hobbies & Personal Interests */}
+          <div className="p-8 rounded-xl border border-zinc-800 space-y-4" style={{ backgroundColor: '#1C1C1C' }}>
+            <h3 className="text-2xl font-bold mb-2 text-white">Hobbies & Interests</h3>
+            <p className="text-gray-400 text-sm mb-4">
+              Creative pursuits that fuel passion, inspiration, and community impact.
+            </p>
+            <ul className="space-y-2.5">
+              {hobbies.map((hobby, hIdx) => (
+                <li key={hIdx} className="flex items-center gap-2 text-gray-300 text-sm">
+                  <span style={{ color: '#D4AF37' }}>◆</span> {hobby}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section className="py-16 px-6 max-w-6xl mx-auto border-t border-zinc-800" id="projects">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3 text-white">Featured Projects & Work</h2>
+          <h2 className="text-3xl font-bold mb-3 text-white">Featured Projects & Media Work</h2>
           <p className="text-gray-400">
             A showcase of journalism, video editing, and digital media initiatives.
           </p>
@@ -215,22 +295,33 @@ export default function Home() {
       </section>
 
       {/* Contact Section & Footer */}
-      <footer className="border-t border-zinc-800 py-12 text-center" style={{ backgroundColor: '#1C1C1C' }} id="contact">
-        <div className="max-w-4xl mx-auto px-6 space-y-4">
-          <h2 className="text-2xl font-bold text-white">Let's Work Together</h2>
-          <p className="text-gray-300 text-sm">
-            Have a project in mind or want to collaborate on stories and digital experiences?
+      <footer className="border-t border-zinc-800 py-16 text-center" style={{ backgroundColor: '#1C1C1C' }} id="contact">
+        <div className="max-w-4xl mx-auto px-6 space-y-6">
+          <h2 className="text-3xl font-bold text-white">Let's Work Together</h2>
+          <p className="text-gray-300 text-base max-w-lg mx-auto">
+            Have a project in mind or want to collaborate on stories and digital experiences? Get in touch today.
           </p>
-          <div className="pt-2">
+          
+          {/* Action Buttons for Direct Email & Call */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
             <a 
-              href="mailto:contact@peterken.com" 
-              className="inline-block px-6 py-3 font-bold rounded-lg shadow transition"
+              href="mailto:Obbayipeter050@gmail.com" 
+              className="w-full sm:w-auto px-8 py-3.5 font-bold rounded-lg shadow transition flex items-center justify-center gap-2 hover:opacity-90"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
-              Get In Touch
+              ✉️ Email: Obbayipeter050@gmail.com
+            </a>
+            
+            <a 
+              href="tel:0707537823" 
+              className="w-full sm:w-auto px-8 py-3.5 border border-amber-500/40 text-white font-semibold rounded-lg shadow-sm transition hover:bg-zinc-800 flex items-center justify-center gap-2"
+              style={{ backgroundColor: '#0B0B0B' }}
+            >
+              📞 Call: 0707 537823
             </a>
           </div>
-          <p className="text-xs text-gray-500 pt-8">
+
+          <p className="text-xs text-gray-500 pt-10">
             © {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.
           </p>
         </div>
