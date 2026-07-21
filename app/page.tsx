@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import peterProfile from "../public/peter-profile.jpg";
 import peterLogo from "../public/peter-logo.png";
 
@@ -82,8 +85,46 @@ const hobbies = [
   "Storytelling & AI Research", "Entrepreneurship", "Church Media Ministry", "Youth Mentorship"
 ];
 
+const rotatingTitles = [
+  "Journalist",
+  "Digital Media Specialist",
+  "Content Creator",
+  "Videographer",
+  "Video Editor",
+  "Music Producer",
+  "Photographer"
+];
+
 export default function Home() {
   const whatsappNumber = "254707537823";
+
+  // Cycling Text State
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentFullTitle = rotatingTitles[titleIndex];
+    
+    const typingSpeed = isDeleting ? 40 : 80;
+    const pauseTime = isDeleting ? 0 : 2000;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && displayText === currentFullTitle) {
+        setTimeout(() => setIsDeleting(true), pauseTime);
+      } else if (isDeleting && displayText === "") {
+        setIsDeleting(false);
+        setTitleIndex((prev) => (prev + 1) % rotatingTitles.length);
+      } else {
+        const nextChar = isDeleting
+          ? currentFullTitle.substring(0, displayText.length - 1)
+          : currentFullTitle.substring(0, displayText.length + 1);
+        setDisplayText(nextChar);
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, titleIndex]);
 
   return (
     <main className="min-h-screen text-white font-sans relative overflow-hidden" style={{ backgroundColor: '#0B0B0B' }}>
@@ -137,9 +178,13 @@ export default function Home() {
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
             Peter Ken Obbayi
           </h1>
-          <p className="text-base md:text-lg font-medium" style={{ color: '#D4AF37' }}>
-            Digital Media Specialist • Journalist • Content Creator • Videographer • Video Editor • Music Producer
+          
+          {/* Animated Cycling Title */}
+          <p className="text-lg md:text-2xl font-bold min-h-[36px]" style={{ color: '#D4AF37' }}>
+            I am a <span className="underline decoration-amber-500/50 underline-offset-4">{displayText}</span>
+            <span className="animate-ping ml-1 text-white inline-block">|</span>
           </p>
+
           <p className="text-gray-300 max-w-lg text-sm md:text-base leading-relaxed">
             A passionate digital media professional and creative storyteller pursuing a B.A. in Journalism and Mass Communication at Kibabii University. I combine creativity, technology, and strategic thinking to help brands communicate effectively.
           </p>
