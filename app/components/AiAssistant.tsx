@@ -50,8 +50,9 @@ export default function AiAssistant() {
         sender: "ai",
         text: initialText,
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        suggestions: ["💡 Brainstorm Content", "🎬 Video/Script Ideas", "📂 View Portfolio", "💬 Book Session"],
+        suggestions: ["📺 YouTube Mixes", "💡 Brainstorm Content", "🎬 Video Scripts", "💬 Book Session"],
         links: [
+          { label: "📺 YouTube (@djvyro_ke)", url: "https://youtube.com/@djvyro_ke?si=GFZA-4EX_v5sIcVT" },
           { label: "📂 Google Drive Portfolio", url: "https://drive.google.com/drive/folders/1T1pnLSosuZzPWkCvZGXqI7dcOThmAoPb?usp=sharing" },
           { label: "💬 Chat on WhatsApp", url: "https://wa.me/254707537823" }
         ]
@@ -59,7 +60,7 @@ export default function AiAssistant() {
     ]);
   }, [lang]);
 
-  // Smooth auto-scroll to bottom of chat
+  // Auto-scroll to latest message
   useEffect(() => {
     if (isOpen) {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -76,51 +77,56 @@ export default function AiAssistant() {
   const processQuery = (queryText: string) => {
     const lower = queryText.toLowerCase();
 
-    // 1. Language Toggle Controls
+    // Language Toggle
     if (lower.includes("swahili") || lower === "sw" || lower.includes("kiswahili")) {
       setLang("sw");
       return {
         text: "Habari! Sasa tunaweza kuzungumza kwa Kiswahili. Nawezaje kukusaidia leo?",
-        suggestions: ["💡 Mawazo ya Yaliyomo", "📂 Tazama Kazi", "💬 Weka Miadi"]
+        suggestions: ["📺 YouTube Mixes", "💡 Mawazo ya Yaliyomo", "💬 Weka Miadi"]
       };
     }
     if (lower.includes("english") || lower === "en") {
       setLang("en");
       return {
         text: "Language set to English! How can I assist with your creative project today?",
-        suggestions: ["💡 Brainstorm Ideas", "🎬 Script Writing", "📂 Portfolio", "💬 Booking"]
+        suggestions: ["📺 YouTube Mixes", "💡 Brainstorm Ideas", "🎬 Script Writing", "💬 Booking"]
       };
     }
 
-    // 2. Creative Brainstorming Contract (Scripts, Captions, Marketing, Songwriting)
+    // YouTube / Music / DJ Queries
+    if (lower.includes("dj") || lower.includes("mix") || lower.includes("youtube") || lower.includes("song") || lower.includes("music")) {
+      return {
+        text: "Peter (DJ Vyro 254) creates DJ mixes, Gospel sessions, and custom audio productions. You can watch his mixes on YouTube:",
+        links: [
+          { label: "📺 DJ Vyro 254 Channel", url: "https://youtube.com/@djvyro_ke?si=GFZA-4EX_v5sIcVT" },
+          { label: "📂 Google Drive Vault", url: "https://drive.google.com/drive/folders/1T1pnLSosuZzPWkCvZGXqI7dcOThmAoPb?usp=sharing" }
+        ],
+        suggestions: ["Podcast Production", "Audio Mastering", "Book DJ Session"]
+      };
+    }
+
+    // Script Writing & Brainstorming
     if (lower.includes("script") || lower.includes("uandishi")) {
       return {
-        text: "I'd love to help script your video! For a strong narrative, consider this format:\n\n1. Hook (0-5s): A bold question or dynamic visual.\n2. Story/Value (5-45s): Showcase the core subject or story.\n3. Call to Action (45-60s): Direct viewers to visit your page or contact.\n\nWould you like me to tailor a script idea for corporate, social media, or documentary style?",
-        suggestions: ["Corporate Script", "TikTok/Reels Script", "Documentary Hook"]
+        text: "I'd love to help script your video! For a high-converting reel, use this layout:\n\n1. Hook (0-5s): Bold statement or visual angle.\n2. Core Value (5-45s): Storytelling or service showcase.\n3. Call to Action (45-60s): Direct audience to link or contact.\n\nWould you like ideas for corporate, documentary, or TikTok video scripts?",
+        suggestions: ["Corporate Script", "Reels Script", "Documentary Hook"]
       };
     }
 
     if (lower.includes("brainstorm") || lower.includes("caption") || lower.includes("marketing") || lower.includes("idea")) {
       return {
-        text: "Here are a few quick content & marketing ideas tailored for digital media:\n\n• Behind-the-Scenes Reel: Show the raw filming process and gear setup.\n• Client Story Spotlight: Short 30s interview highlighting real results.\n• Engaging Caption Hook: 'Stop scrolling if you want your video content to convert...'\n\nWhich direction fits your goal best?",
-        suggestions: ["Social Media Captions", "Event Concept", "Songwriting Ideas"]
+        text: "Here are quick media marketing concepts:\n\n• Behind-The-Scenes: Show raw footage capture and video editing in action.\n• Client Outcome Spotlight: Quick 30-second testimonial video.\n• High-Engagement Caption: 'Want your video content to convert? Start doing this...'\n\nWhich direction fits your goal best?",
+        suggestions: ["Social Captions", "Event Concept", "Content Plan"]
       };
     }
 
-    if (lower.includes("song") || lower.includes("music") || lower.includes("audio")) {
-      return {
-        text: "For audio production and songwriting, we focus on building a strong melody, crisp mixing, and punchy arrangement in FL Studio. Peter offers beat production, DJ mixing, and audio polishing. Would you like to review music production options?",
-        suggestions: ["Podcast Production", "DJ Mixing", "Audio Mastering"]
-      };
-    }
-
-    // 3. Intelligent Website Navigation & Core Services
+    // Navigation & Services
     if (lower.includes("service") || lower.includes("huduma") || lower.includes("offer")) {
       scrollToSection("services");
       return {
         text: lang === "sw"
-          ? "Peter anatoa huduma za Uhariri wa Video, Picha, Production ya Audio, na Utafiti wa Habari. Nimekupeleka kwenye sehemu ya Huduma!"
-          : "Peter specializes in Corporate Videography, Video Editing, Digital Marketing, Audio Production, and Journalism. I've scrolled you to the Core Services section!",
+          ? "Peter anatoa huduma za Videography, Uhariri wa Video, Picha, na Production ya Sauti. Nimekuonyesha sehemu ya Huduma!"
+          : "Peter offers Corporate Videography, Video Editing, Digital Marketing, Audio Production, and Journalism. I've navigated you to the Core Services section!",
         suggestions: ["Book Videography", "Audio Services", "Custom Quote"]
       };
     }
@@ -129,9 +135,12 @@ export default function AiAssistant() {
       scrollToSection("projects");
       return {
         text: lang === "sw"
-          ? "Tazama kazi za video, picha, na makala kwenye Google Drive Portfolio:"
-          : "You can explore Peter's full video reels, audio edits, and media documentations directly in his Google Drive vault below:",
-        links: [{ label: "📂 Open Google Drive Vault", url: "https://drive.google.com/drive/folders/1T1pnLSosuZzPWkCvZGXqI7dcOThmAoPb?usp=sharing" }],
+          ? "Tazama kazi za video, picha, na YouTube mixes kupitia viungo hivi:"
+          : "You can explore Peter's full video reels, audio edits, and YouTube DJ mixes below:",
+        links: [
+          { label: "📺 YouTube Channel", url: "https://youtube.com/@djvyro_ke?si=GFZA-4EX_v5sIcVT" },
+          { label: "📂 Google Drive Vault", url: "https://drive.google.com/drive/folders/1T1pnLSosuZzPWkCvZGXqI7dcOThmAoPb?usp=sharing" }
+        ],
         suggestions: ["Book a Shoot", "Contact Direct"]
       };
     }
@@ -139,29 +148,28 @@ export default function AiAssistant() {
     if (lower.includes("book") || lower.includes("contact") || lower.includes("miadi") || lower.includes("hire")) {
       scrollToSection("contact");
       return {
-        text: "You can easily schedule a shoot or request custom pricing. Direct contacts:\n\n• Phone/WhatsApp: +254 707 537 823\n• Email: Obbayipeter050@gmail.com\n\nNote: For exact project quotes, connecting on WhatsApp allows for the quickest response!",
+        text: "You can schedule a session or request custom pricing directly:\n\n• Phone/WhatsApp: +254 707 537 823\n• Email: Obbayipeter050@gmail.com\n\nConnecting on WhatsApp provides the fastest response time!",
         links: [
-          { label: "💬 WhatsApp Chat", url: "https://wa.me/254707537823?text=Hello%20Peter,%20I%20want%20to%20book%20a%20session." },
-          { label: "✉️ Send Email", url: "mailto:Obbayipeter050@gmail.com" }
+          { label: "💬 Chat on WhatsApp", url: "https://wa.me/254707537823?text=Hello%20Peter,%20I%20want%20to%20book%20a%20session." },
+          { label: "✉️ Email Direct", url: "mailto:Obbayipeter050@gmail.com" }
         ],
         suggestions: ["Ask Turnaround Time", "View Rates"]
       };
     }
 
-    // 4. Privacy & Safety Guardrails (Legal, Medical, Financial)
+    // Privacy & Safety Guardrails
     if (lower.includes("legal") || lower.includes("medical") || lower.includes("tax") || lower.includes("finance")) {
       return {
-        text: "I am designed to assist with creative, media, and booking queries regarding Peter's portfolio. For legal, medical, or financial advice, please consult a certified professional in those respective fields.",
+        text: "I am programmed to assist with media production, creative queries, and booking for Peter. For legal, medical, or financial matters, please consult a certified professional.",
         suggestions: ["Media Services", "Book Session"]
       };
     }
 
-    // Default polite response with suggested next steps
     return {
       text: lang === "sw"
-        ? "Asante kwa swali lako! Mimi ni Msaidizi wa Peter. Je, ungependa kubuni mawazo ya video, kutazama kazi, au kuweka miadi?"
-        : "Thanks for reaching out! I'm here to assist with creative brainstorms, service info, portfolio navigation, and booking setups. What topic would you like to explore next?",
-      suggestions: ["💡 Brainstorm Ideas", "🎬 Script Writing", "📂 View Portfolio", "💬 Contact Peter"]
+        ? "Asante kwa ujumbe wako! Mimi ni Msaidizi wa Peter. Je, ungependa kubuni mawazo ya video, kutazama kazi za YouTube, au kuweka miadi?"
+        : "Thanks for reaching out! I'm here to assist with creative ideas, script brainstorms, portfolio navigation, and booking setups. What would you like to explore?",
+      suggestions: ["📺 YouTube Mixes", "💡 Brainstorm Ideas", "🎬 Script Writing", "💬 Contact Peter"]
     };
   };
 
@@ -198,7 +206,7 @@ export default function AiAssistant() {
 
   return (
     <>
-      {/* Fixed Bottom-Left Floating Toggle Button */}
+      {/* Fixed Bottom-Left Floating Trigger */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
@@ -211,7 +219,7 @@ export default function AiAssistant() {
         </button>
       )}
 
-      {/* Bottom-Left Chat Drawer Popup (Leaves website structure visible) */}
+      {/* Bottom-Left Floating Drawer (Keeps main website structure visible) */}
       {isOpen && (
         <div className="fixed bottom-6 left-6 z-50 w-80 sm:w-96 rounded-2xl bg-zinc-950/95 border border-zinc-800 shadow-2xl backdrop-blur-md flex flex-col overflow-hidden text-white transition-all max-h-[80vh]">
           
@@ -245,7 +253,7 @@ export default function AiAssistant() {
             </div>
           </div>
 
-          {/* Chat Messages Body */}
+          {/* Messages Body */}
           <div className="p-3.5 h-72 overflow-y-auto space-y-3 text-xs">
             {messages.map((msg) => (
               <div
@@ -261,7 +269,7 @@ export default function AiAssistant() {
                 >
                   {msg.text}
 
-                  {/* Rich Interactive Links */}
+                  {/* Interactive Links */}
                   {msg.links && msg.links.length > 0 && (
                     <div className="mt-2.5 pt-2 border-t border-zinc-800 flex flex-col gap-1.5">
                       {msg.links.map((link, lIdx) => (
@@ -279,7 +287,7 @@ export default function AiAssistant() {
                   )}
                 </div>
 
-                {/* Follow-up Suggestion Chips */}
+                {/* Follow-up Suggestions */}
                 {msg.sender === "ai" && msg.suggestions && (
                   <div className="flex flex-wrap gap-1 mt-2">
                     {msg.suggestions.map((sug, sIdx) => (
@@ -311,7 +319,7 @@ export default function AiAssistant() {
 
           {/* Quick Action Chips */}
           <div className="px-2.5 py-2 flex flex-wrap gap-1 border-t border-zinc-800 bg-zinc-900/50">
-            {["💡 Brainstorm", "🎬 Script Hook", "📂 Portfolio", "💬 Book Shoot"].map((prompt, idx) => (
+            {["📺 YouTube", "💡 Brainstorm", "🎬 Script", "💬 Booking"].map((prompt, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(prompt)}
@@ -322,14 +330,14 @@ export default function AiAssistant() {
             ))}
           </div>
 
-          {/* Input Bar */}
+          {/* Input Field */}
           <div className="p-2.5 border-t border-zinc-800 bg-zinc-900 flex items-center gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              placeholder={lang === "sw" ? "Uliza au leza wazo lako..." : "Ask about booking, scripts, or rates..."}
+              placeholder={lang === "sw" ? "Uliza au leza wazo..." : "Ask about YouTube, scripts, rates..."}
               className="flex-1 bg-zinc-800 text-xs text-white placeholder-zinc-500 px-3 py-2 rounded-full border border-zinc-700 focus:outline-none focus:border-amber-500"
             />
             <button

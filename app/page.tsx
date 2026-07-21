@@ -72,6 +72,7 @@ const supportFaqs = [
 export default function Home() {
   const whatsappNumber = "254707537823";
   const driveFolderLink = "https://drive.google.com/drive/folders/1T1pnLSosuZzPWkCvZGXqI7dcOThmAoPb?usp=sharing";
+  const youtubeLink = "https://youtube.com/@djvyro_ke?si=GFZA-4EX_v5sIcVT";
 
   const [showSplash, setShowSplash] = useState(true);
   const [fadeSplash, setFadeSplash] = useState(false);
@@ -145,11 +146,11 @@ export default function Home() {
         </div>
       )}
 
-      {/* Background Glow Effects */}
+      {/* Background Glows */}
       <div className="absolute top-[-100px] left-[-100px] w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
       <div className="absolute top-1/3 right-[-100px] w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
 
-      {/* Floating WhatsApp Quick Button */}
+      {/* Floating WhatsApp Action */}
       <a 
         href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20visited%20your%20website%20and%20would%20like%20to%20connect.`}
         target="_blank"
@@ -161,7 +162,7 @@ export default function Home() {
         <span className="hidden sm:inline text-sm">WhatsApp</span>
       </a>
 
-      {/* Navbar */}
+      {/* Header Bar */}
       <header className="relative z-10 max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <Image 
@@ -213,11 +214,12 @@ export default function Home() {
               View Portfolio Drive
             </a>
             <a 
-              href="#contact" 
-              className="px-6 py-2.5 text-white font-semibold text-sm rounded-lg transition duration-300 hover:bg-zinc-800 hover:scale-105"
-              style={{ backgroundColor: '#1C1C1C' }}
+              href={youtubeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 font-bold text-sm rounded-lg transition duration-300 hover:scale-105 bg-red-600 text-white hover:bg-red-500"
             >
-              Contact Me
+              📺 YouTube Mixes
             </a>
           </div>
         </div>
@@ -333,47 +335,59 @@ export default function Home() {
       </section>
 
       {/* Projects Showcase */}
-      <section className="relative z-10 py-14 px-6 max-w-4xl mx-auto" id="projects">
+      <section className="relative z-10 py-14 px-6 max-w-5xl mx-auto" id="projects">
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Media Projects & Portfolio Vault</h2>
           <p className="text-gray-400 text-sm">
-            Access the complete collection of journalism features, corporate videography reels, digital audio edits, and media content assets.
+            Explore video reels, journalism features, DJ mixes, and raw media assets across Google Drive and YouTube.
           </p>
         </div>
 
-        <div className="p-8 rounded-2xl shadow-2xl text-center space-y-6 transition duration-300 hover:shadow-amber-500/10" style={{ backgroundColor: '#1C1C1C' }}>
-          <div className="inline-block p-4 rounded-full bg-amber-500/10 mb-2">
-            <span className="text-4xl">📁</span>
-          </div>
-
-          <div className="space-y-2">
-            <h3 className="text-xl md:text-2xl font-bold text-white">
-              Official Media & Project Drive
-            </h3>
-            <p className="text-gray-300 text-sm max-w-lg mx-auto leading-relaxed">
-              Includes full video reels, high-resolution photography, audio production projects, and journalism documentations.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-2 pt-2">
-            <span className="text-xs px-3 py-1 rounded bg-zinc-800 text-gray-300 font-medium">Videography</span>
-            <span className="text-xs px-3 py-1 rounded bg-zinc-800 text-gray-300 font-medium">Journalism</span>
-            <span className="text-xs px-3 py-1 rounded bg-zinc-800 text-gray-300 font-medium">Audio Editing</span>
-            <span className="text-xs px-3 py-1 rounded bg-zinc-800 text-gray-300 font-medium">Content Strategy</span>
-          </div>
-
-          <div className="pt-4">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          
+          {/* Google Drive Vault */}
+          <div className="p-8 rounded-2xl text-center space-y-5 border border-zinc-800 transition duration-300 hover:border-amber-500/40 flex flex-col justify-between" style={{ backgroundColor: '#1C1C1C' }}>
+            <div className="space-y-4">
+              <div className="inline-block p-4 rounded-full bg-amber-500/10">
+                <span className="text-3xl">📂</span>
+              </div>
+              <h3 className="text-xl font-bold text-white">Google Drive Vault</h3>
+              <p className="text-gray-400 text-xs leading-relaxed">
+                Full video reels, high-res photo archives, journalism documentations, and raw media project files.
+              </p>
+            </div>
             <a 
               href={driveFolderLink} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 font-bold text-sm md:text-base rounded-xl transition duration-300 hover:scale-105 shadow-xl shadow-amber-500/10"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-xs rounded-xl transition duration-300 hover:scale-105 mt-4"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
-              <span>Explore Google Drive Portfolio</span>
-              <span>📂</span>
+              <span>Open Drive Portfolio</span> ➔
             </a>
           </div>
+
+          {/* YouTube Channel */}
+          <div className="p-8 rounded-2xl text-center space-y-5 border border-zinc-800 transition duration-300 hover:border-red-500/40 flex flex-col justify-between" style={{ backgroundColor: '#1C1C1C' }}>
+            <div className="space-y-4">
+              <div className="inline-block p-4 rounded-full bg-red-500/10">
+                <span className="text-3xl">📺</span>
+              </div>
+              <h3 className="text-xl font-bold text-white">DJ Vyro 254 YouTube Channel</h3>
+              <p className="text-gray-400 text-xs leading-relaxed">
+                Watch DJ mixes, live Gospel sets, praise sessions, and video creative productions on YouTube.
+              </p>
+            </div>
+            <a 
+              href={youtubeLink} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-xs rounded-xl transition duration-300 hover:scale-105 text-white bg-red-600 hover:bg-red-500 mt-4"
+            >
+              <span>Subscribe & Watch Mixes</span> ➔
+            </a>
+          </div>
+
         </div>
       </section>
 
@@ -454,7 +468,7 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* AI Assistant Floating Widget */}
+      {/* Floating Bottom-Left AI Assistant */}
       <AiAssistant />
 
     </main>
