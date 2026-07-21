@@ -1,152 +1,179 @@
-import Image from "next/image";import Navbar from "./components/Navbar";
+import Image from "next/image";
+
+interface Project {
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  link: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "Media Production & Portfolio Asset 1",
+    category: "Journalism / Videography",
+    description: "Featured media coverage and project documentation for Peter Ken Obbayi's creative work.",
+    tags: ["Journalism", "Video Production", "Kibabii University"],
+    link: "https://drive.google.com/file/d/14ciq03BcBKoF7J7tfUuJaeQpo8PqF4ci/view?usp=sharing",
+  },
+  {
+    title: "Digital Storytelling & Journalism Feature 2",
+    category: "Media Coverage",
+    description: "In-depth article and broadcast documentation showcasing digital media storytelling.",
+    tags: ["Media Strategy", "Editing", "Adobe Premiere Pro"],
+    link: "https://drive.google.com/file/d/11fXlkPaJcxo12OCYCcsYFez9oCl3Lr02/view?usp=sharing",
+  },
+  {
+    title: "Corporate Video & Photography Reel 3",
+    category: "Videography",
+    description: "Professional camera work, livestreaming, and cinematography portfolio sample.",
+    tags: ["Cinematography", "DaVinci Resolve", "Videography"],
+    link: "https://drive.google.com/file/d/1NY8N7KqV8W7Ig3yzHAPl96zeD0h8wqxn/view?usp=sharing",
+  },
+  {
+    title: "Web & Content Creation Project 4",
+    category: "Web & Digital Content",
+    description: "Integration of modern web tools with creative media distribution for audience engagement.",
+    tags: ["Web Development", "Content Strategy", "Digital Media"],
+    link: "https://drive.google.com/file/d/1goaxAJAifjvK8jjDDjOWKp_b5AuxVdTA/view?usp=sharing",
+  },
+  {
+    title: "Audio & Media Production Project 5",
+    category: "Audio / Broadcast",
+    description: "Sound design and audio-visual post-production compilation.",
+    tags: ["Audio Editing", "FL Studio", "Post-Production"],
+    link: "https://drive.google.com/file/d/1o9PqGO1-ADNo9SGVNGiVvgq6tPmqO7q4/view?usp=sharing",
+  },
+];
 
 export default function Home() {
   return (
-    <div style={{ backgroundColor: "#0a0a0a", color: "#eaeaea", minHeight: "100vh", transition: "background-color 0.3s ease" }}>
-      <main style={{ padding: "0 2rem 4rem 2rem", fontFamily: "sans-serif", maxWidth: "1100px", margin: "0 auto", scrollBehavior: "smooth" }}>
-        <Navbar />
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      
+      {/* Header / Navbar */}
+      <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
+        <div className="flex items-center gap-3">
+          <Image 
+            src="/peter-logo.png" 
+            alt="Peter Ken Logo" 
+            width={45} 
+            height={45} 
+            className="object-contain"
+            unoptimized
+          />
+          <span className="font-bold text-xl tracking-wider uppercase hidden sm:inline">
+            Peter Ken
+          </span>
+        </div>
+        <nav className="flex gap-6 text-sm font-semibold">
+          <a href="#about" className="hover:text-amber-500 transition">About</a>
+          <a href="#projects" className="hover:text-amber-500 transition">Projects</a>
+          <a href="#contact" className="hover:text-amber-500 transition">Contact</a>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col-reverse md:flex-row items-center justify-between gap-12" id="about">
         
-        {/* Hero Section */}
-        <section style={{ padding: "5rem 0 4rem 0", display: "flex", alignItems: "center", justifyContent: "center", gap: "4rem", flexWrap: "wrap" }}>
-          
-          {/* Profile Photo Container */}
-          <div style={{ 
-            width: "300px", 
-            height: "300px", 
-            borderRadius: "50%", 
-            overflow: "hidden", 
-            border: "4px solid #222",
-            position: "relative",
-            flexShrink: 0
-          }}>
-            <Image 
-             src="/peter-portfolio/peter-photo.jpg"
-              alt="Peter Ken Obbayi" 
-              fill 
-              style={{ objectFit: "cover" }} 
-              priority
-            />
-          </div>
-
-          {/* Hero Text */}
-          <div style={{ textAlign: "left", maxWidth: "600px" }}>
-            <h1 style={{ fontSize: "3.5rem", marginBottom: "0.5rem", color: "#fff", fontWeight: "800", letterSpacing: "-1px", textTransform: "uppercase" }}>
-              Peter Ken Obbayi
-            </h1>
-            <p style={{ fontSize: "1.15rem", color: "#aaa", marginBottom: "2rem", lineHeight: "1.6" }}>
-              DIGITAL MEDIA SPECIALIST | JOURNALIST | CONTENT CREATOR
-            </p>
-            
-            {/* Quick Contact Badges */}
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <span style={{ padding: "0.6rem 1.2rem", backgroundColor: "#161616", borderRadius: "30px", fontSize: "0.9rem", border: "1px solid #222" }}>
-                📞 0707537823
-              </span>
-              <span style={{ padding: "0.6rem 1.2rem", backgroundColor: "#161616", borderRadius: "30px", fontSize: "0.9rem", border: "1px solid #222" }}>
-                ✉️ Obbayipeter050@gmail.com
-              </span>
-            </div>
-          </div>
-        </section>
-
-        {/* About Section */}
-        <section id="about" style={{ marginBottom: "5rem", scrollMarginTop: "4rem" }}>
-          <h2 style={{ fontSize: "1.6rem", marginBottom: "1.2rem", color: "#fff", letterSpacing: "0.5px" }}>About Me</h2>
-          <p style={{ lineHeight: "1.7", color: "#aaa", fontSize: "1.05rem" }}>
-            I am a passionate digital media professional, creative storyteller, and aspiring communications expert dedicated to transforming ideas into compelling visual and digital experiences. Currently pursuing a Bachelor of Arts in Journalism and Mass Communication at Kibabii University, I combine creativity, technology, and strategic thinking to help brands communicate effectively.
+        {/* Text Area */}
+        <div className="flex-1 text-center md:text-left space-y-6">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+            Peter Ken Obbayi
+          </h1>
+          <p className="text-lg md:text-xl font-medium text-amber-600 dark:text-amber-400">
+            Journalist • Videographer • Web Developer • Media Creator
+          </p>
+          <p className="text-gray-600 dark:text-gray-300 max-w-lg text-base md:text-lg leading-relaxed">
+            Creating cinematic stories and modern digital experiences. Bridging the gap between powerful journalism, media production, and functional web design.
           </p>
           
-          {/* Vision & Values Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem", marginTop: "2.5rem" }}>
-            <div style={{ padding: "1.5rem", backgroundColor: "#121212", borderTop: "3px solid #fff", borderRadius: "6px", border: "1px solid #1c1c1c" }}>
-              <h4 style={{ margin: "0 0 0.7rem 0", color: "#fff", fontSize: "1.05rem" }}>🚀 Career Vision</h4>
-              <p style={{ color: "#888", margin: 0, fontSize: "0.95rem", lineHeight: "1.6" }}>To become one of Africa's leading digital media innovators, empowering organizations and communities through impactful storytelling and technology.</p>
-            </div>
-            <div style={{ padding: "1.5rem", backgroundColor: "#121212", borderTop: "3px solid #fff", borderRadius: "6px", border: "1px solid #1c1c1c" }}>
-              <h4 style={{ margin: "0 0 0.7rem 0", color: "#fff", fontSize: "1.05rem" }}>💎 Core Values</h4>
-              <p style={{ color: "#888", margin: 0, fontSize: "0.95rem", lineHeight: "1.6" }}>Integrity, creativity, professionalism, innovation, excellence, accountability, teamwork, and continuous learning.</p>
-            </div>
+          <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
+            <a 
+              href="#projects" 
+              className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg shadow transition duration-200"
+            >
+              View Projects
+            </a>
+            <a 
+              href="#contact" 
+              className="px-6 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg shadow-sm transition duration-200"
+            >
+              Contact Me
+            </a>
           </div>
-        </section>
+        </div>
 
-        {/* Core Services */}
-        <section id="services" style={{ marginBottom: "5rem", scrollMarginTop: "4rem" }}>
-          <h2 style={{ fontSize: "1.6rem", marginBottom: "1.5rem", color: "#fff", letterSpacing: "0.5px" }}>Core Services</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
-            <div style={{ padding: "1.75rem", backgroundColor: "#121212", border: "1px solid #1c1c1c", borderRadius: "8px" }}>
-              <h3 style={{ color: "#fff", marginTop: 0, fontSize: "1.2rem" }}>📹 Media Production</h3>
-              <p style={{ color: "#888", fontSize: "0.95rem", lineHeight: "1.5", margin: "0.5rem 0 0 0" }}>Corporate video production, videography, video editing, photography, livestreaming, and podcast production.</p>
-            </div>
-            <div style={{ padding: "1.75rem", backgroundColor: "#121212", border: "1px solid #1c1c1c", borderRadius: "8px" }}>
-              <h3 style={{ color: "#fff", marginTop: 0, fontSize: "1.2rem" }}>📈 Digital Marketing</h3>
-              <p style={{ color: "#888", fontSize: "0.95rem", lineHeight: "1.5", margin: "0.5rem 0 0 0" }}>Social media management, branding, YouTube strategy, search engine optimization, and creative consulting.</p>
-            </div>
-            <div style={{ padding: "1.75rem", backgroundColor: "#121212", border: "1px solid #1c1c1c", borderRadius: "8px" }}>
-              <h3 style={{ color: "#fff", marginTop: 0, fontSize: "1.2rem" }}>🎵 Audio Production</h3>
-              <p style={{ color: "#888", fontSize: "0.95rem", lineHeight: "1.5", margin: "0.5rem 0 0 0" }}>Professional music production and high-fidelity DJ mixing services.</p>
-            </div>
+        {/* Profile Image */}
+        <div className="flex-1 flex justify-center">
+          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white dark:border-gray-800">
+            <Image
+              src="/peter-profile.jpg"
+              alt="Peter Ken Obbayi Profile Portrait"
+              fill
+              className="object-cover"
+              priority
+              unoptimized
+            />
           </div>
-        </section>
+        </div>
 
-        {/* Featured Media Showcase Section */}
-        <section id="portfolio" style={{ marginBottom: "5rem", scrollMarginTop: "4rem" }}>
-          <h2 style={{ fontSize: "1.6rem", marginBottom: "1.5rem", color: "#fff", letterSpacing: "0.5px" }}>Featured Work</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "2rem" }}>
-            
-            {/* Video Showcase Item */}
-            <div style={{ border: "1px solid #1c1c1c", borderRadius: "8px", overflow: "hidden", backgroundColor: "#121212" }}>
-              <div style={{ width: "100%", height: "200px", backgroundColor: "#1a1a1a", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "#666" }}>
-                <span style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🎬</span>
-                <span style={{ fontSize: "0.85rem", color: "#555" }}>Ready for YouTube Embed / Video Link</span>
+      </section>
+
+      {/* Projects Section */}
+      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-gray-200 dark:border-gray-800" id="projects">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-3">Featured Projects & Media Work</h2>
+          <p className="text-gray-600 dark:text-gray-400">
+            A showcase of journalism, video editing, and digital creation.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <div 
+              key={index} 
+              className="border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-gray-800 flex flex-col justify-between hover:shadow-md transition"
+            >
+              <div className="p-6">
+                <span className="text-xs font-semibold uppercase tracking-wider text-amber-500">
+                  {project.category}
+                </span>
+                <h3 className="text-xl font-bold mt-2 mb-3">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag, tIdx) => (
+                    <span 
+                      key={tIdx} 
+                      className="text-xs bg-gray-100 dark:bg-gray-700 px-2.5 py-1 rounded-md text-gray-700 dark:text-gray-300 font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div style={{ padding: "1.25rem" }}>
-                <h4 style={{ margin: "0 0 0.5rem 0", color: "#fff" }}>Video & Cinematography Reel</h4>
-                <p style={{ color: "#888", fontSize: "0.85rem", margin: 0, lineHeight: "1.5" }}>Demonstrating camera movement, crisp sequencing, and post-production coloring workflow.</p>
+
+              <div className="p-6 pt-0">
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold py-2.5 rounded-lg transition"
+                >
+                  View Document / Link 🔗
+                </a>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
 
-            {/* Audio Showcase Item */}
-            <div style={{ border: "1px solid #1c1c1c", borderRadius: "8px", overflow: "hidden", backgroundColor: "#121212" }}>
-              <div style={{ width: "100%", height: "200px", backgroundColor: "#1a1a1a", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: "#666" }}>
-                <span style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🎹</span>
-                <span style={{ fontSize: "0.85rem", color: "#555" }}>Ready for Soundcloud / Audio Player Link</span>
-              </div>
-              <div style={{ padding: "1.25rem" }}>
-                <h4 style={{ margin: "0 0 0.5rem 0", color: "#fff" }}>Music Engineering & Production</h4>
-                <p style={{ color: "#888", fontSize: "0.85rem", margin: 0, lineHeight: "1.5" }}>Synthesizer arrangement, vocal mastering, and beats produced using professional audio software.</p>
-              </div>
-            </div>
+      {/* Footer */}
+      <footer className="border-t border-gray-200 dark:border-gray-800 py-8 text-center text-sm text-gray-500" id="contact">
+        <p>© {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.</p>
+      </footer>
 
-          </div>
-        </section>
-
-        {/* Technical Toolkit & Hobbies Grid */}
-        <section style={{ borderTop: "1px solid #1c1c1c", paddingTop: "4rem" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem" }}>
-            <div>
-              <h2 style={{ fontSize: "1.6rem", marginBottom: "1.2rem", color: "#fff" }}>Technical Toolkit</h2>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.8rem" }}>
-                {["Adobe Premiere Pro", "DaVinci Resolve", "FL Studio", "Canva", "OBS Studio", "AI Tools"].map((tool) => (
-                  <span key={tool} style={{ padding: "0.5rem 1rem", backgroundColor: "#121212", border: "1px solid #222", color: "#fff", borderRadius: "20px", fontSize: "0.9rem", fontWeight: "500" }}>
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <h2 style={{ fontSize: "1.6rem", marginBottom: "1.2rem", color: "#fff" }}>Hobbies & Interests</h2>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem" }}>
-                {["Music production", "DJ mixing", "Drumming", "Photography", "Videography", "Storytelling", "AI", "Entrepreneurship", "Church media ministry"].map((hobby) => (
-                  <span key={hobby} style={{ padding: "0.4rem 0.8rem", backgroundColor: "#0f0f0f", border: "1px solid #222", borderRadius: "4px", fontSize: "0.85rem", color: "#888" }}>
-                    {hobby}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
+    </main>
   );
 }
