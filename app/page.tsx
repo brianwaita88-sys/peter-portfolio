@@ -67,25 +67,25 @@ const skillCategories = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+    <main className="min-h-screen bg-[#0B0B0B] text-[#FFFFFF] font-sans">
       
       {/* Header / Navbar */}
-      <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
+      <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center border-b border-[#1C1C1C]">
         <div className="flex items-center gap-3">
           <Image 
             src={peterLogo} 
             alt="Peter Ken Logo" 
             className="w-10 h-10 object-contain"
           />
-          <span className="font-bold text-lg tracking-wider uppercase hidden sm:inline">
+          <span className="font-bold text-lg tracking-wider uppercase hidden sm:inline text-[#FFFFFF]">
             Peter Ken
           </span>
         </div>
         <nav className="flex gap-6 text-sm font-semibold">
-          <a href="#about" className="hover:text-amber-500 transition">About</a>
-          <a href="#skills" className="hover:text-amber-500 transition">Skills</a>
-          <a href="#projects" className="hover:text-amber-500 transition">Projects</a>
-          <a href="#contact" className="hover:text-amber-500 transition">Contact</a>
+          <a href="#about" className="hover:text-[#D4AF37] transition text-gray-300">About</a>
+          <a href="#skills" className="hover:text-[#D4AF37] transition text-gray-300">Skills</a>
+          <a href="#projects" className="hover:text-[#D4AF37] transition text-gray-300">Projects</a>
+          <a href="#contact" className="hover:text-[#D4AF37] transition text-gray-300">Contact</a>
         </nav>
       </header>
 
@@ -94,13 +94,13 @@ export default function Home() {
         
         {/* Text Area */}
         <div className="flex-1 text-center md:text-left space-y-6">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-[#FFFFFF]">
             Peter Ken Obbayi
           </h1>
-          <p className="text-lg md:text-xl font-medium text-amber-600 dark:text-amber-400">
+          <p className="text-lg md:text-xl font-medium text-[#D4AF37]">
             Journalist • Videographer • Web Developer • Media Creator
           </p>
-          <p className="text-gray-600 dark:text-gray-300 max-w-lg text-base md:text-lg leading-relaxed">
+          <p className="text-gray-300 max-w-lg text-base md:text-lg leading-relaxed">
             Creating cinematic stories and modern digital experiences. Bridging the gap between powerful journalism, video creation, and modern web applications.
           </p>
           
@@ -108,13 +108,13 @@ export default function Home() {
           <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
             <a 
               href="#projects" 
-              className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg shadow transition duration-200"
+              className="px-6 py-3 bg-[#D4AF37] hover:bg-[#C59B27] text-[#0B0B0B] font-bold rounded-lg shadow transition duration-200"
             >
               View Projects
             </a>
             <a 
               href="#contact" 
-              className="px-6 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg shadow-sm transition duration-200"
+              className="px-6 py-3 border border-[#D4AF37] bg-[#1C1C1C] hover:bg-[#2A2A2A] text-[#FFFFFF] font-semibold rounded-lg shadow-sm transition duration-200"
             >
               Contact Me
             </a>
@@ -123,7 +123,7 @@ export default function Home() {
 
         {/* Profile Image */}
         <div className="flex-1 flex justify-center">
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white dark:border-gray-800">
+          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-[#1C1C1C]">
             <Image
               src={peterProfile}
               alt="Peter Ken Obbayi Profile Portrait"
@@ -136,22 +136,22 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-gray-200 dark:border-gray-800" id="skills">
+      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-[#1C1C1C]" id="skills">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3">Core Skills & Expertise</h2>
-          <p className="text-gray-600 dark:text-gray-400">
+          <h2 className="text-3xl font-bold mb-3 text-[#FFFFFF]">Core Skills & Expertise</h2>
+          <p className="text-gray-400">
             A comprehensive overview of my creative and technical capabilities.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {skillCategories.map((category, idx) => (
-            <div key={idx} className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
-              <h3 className="text-xl font-bold mb-4 text-amber-500">{category.title}</h3>
+            <div key={idx} className="bg-[#1C1C1C] p-6 rounded-xl border border-[#2A2A2A] shadow-sm">
+              <h3 className="text-xl font-bold mb-4 text-[#D4AF37]">{category.title}</h3>
               <ul className="space-y-2">
                 {category.skills.map((skill, sIdx) => (
-                  <li key={sIdx} className="flex items-center gap-2 text-gray-700 dark:text-gray-300 text-sm">
-                    <span className="text-amber-500">✓</span> {skill}
+                  <li key={sIdx} className="flex items-center gap-2 text-gray-300 text-sm">
+                    <span className="text-[#D4AF37]">✓</span> {skill}
                   </li>
                 ))}
               </ul>
@@ -161,10 +161,10 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-gray-200 dark:border-gray-800" id="projects">
+      <section className="py-16 px-6 max-w-6xl mx-auto border-t border-[#1C1C1C]" id="projects">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3">Featured Projects & Work</h2>
-          <p className="text-gray-600 dark:text-gray-400">
+          <h2 className="text-3xl font-bold mb-3 text-[#FFFFFF]">Featured Projects & Work</h2>
+          <p className="text-gray-400">
             A showcase of journalism, video editing, and digital media initiatives.
           </p>
         </div>
@@ -173,21 +173,21 @@ export default function Home() {
           {projects.map((project, index) => (
             <div 
               key={index} 
-              className="border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-gray-800 flex flex-col justify-between hover:shadow-md transition"
+              className="border border-[#2A2A2A] rounded-xl overflow-hidden shadow-sm bg-[#1C1C1C] flex flex-col justify-between hover:border-[#D4AF37] transition"
             >
               <div className="p-6">
-                <span className="text-xs font-semibold uppercase tracking-wider text-amber-500">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#D4AF37]">
                   {project.category}
                 </span>
-                <h3 className="text-xl font-bold mt-2 mb-3">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed">
+                <h3 className="text-xl font-bold mt-2 mb-3 text-[#FFFFFF]">{project.title}</h3>
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tIdx) => (
                     <span 
                       key={tIdx} 
-                      className="text-xs bg-gray-100 dark:bg-gray-700 px-2.5 py-1 rounded-md text-gray-700 dark:text-gray-300 font-medium"
+                      className="text-xs bg-[#2A2A2A] px-2.5 py-1 rounded-md text-gray-300 font-medium"
                     >
                       {tag}
                     </span>
@@ -200,7 +200,7 @@ export default function Home() {
                   href={project.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold py-2.5 rounded-lg transition"
+                  className="block w-full text-center bg-[#D4AF37] hover:bg-[#C59B27] text-[#0B0B0B] text-sm font-bold py-2.5 rounded-lg transition"
                 >
                   View Document / Link 🔗
                 </a>
@@ -211,21 +211,21 @@ export default function Home() {
       </section>
 
       {/* Contact Section & Footer */}
-      <footer className="border-t border-gray-200 dark:border-gray-800 py-12 bg-white dark:bg-gray-800 text-center" id="contact">
+      <footer className="border-t border-[#1C1C1C] py-12 bg-[#1C1C1C] text-center" id="contact">
         <div className="max-w-4xl mx-auto px-6 space-y-4">
-          <h2 className="text-2xl font-bold">Let's Work Together</h2>
-          <p className="text-gray-600 dark:text-gray-300 text-sm">
+          <h2 className="text-2xl font-bold text-[#FFFFFF]">Let's Work Together</h2>
+          <p className="text-gray-300 text-sm">
             Have a project in mind or want to collaborate on stories and digital experiences?
           </p>
           <div className="pt-2">
             <a 
               href="mailto:contact@peterken.com" 
-              className="inline-block px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg shadow transition"
+              className="inline-block px-6 py-3 bg-[#D4AF37] hover:bg-[#C59B27] text-[#0B0B0B] font-bold rounded-lg shadow transition"
             >
               Get In Touch
             </a>
           </div>
-          <p className="text-xs text-gray-400 pt-8">
+          <p className="text-xs text-gray-500 pt-8">
             © {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.
           </p>
         </div>
