@@ -84,10 +84,15 @@ const hobbies = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-white font-sans" style={{ backgroundColor: '#0B0B0B' }}>
+    <main className="min-h-screen text-white font-sans relative overflow-hidden" style={{ backgroundColor: '#0B0B0B' }}>
       
+      {/* Animated Background Lights */}
+      <div className="absolute top-[-100px] left-[-100px] w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
+      <div className="absolute top-1/3 right-[-100px] w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute bottom-1/4 left-[-100px] w-96 h-96 bg-amber-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '4s' }}></div>
+
       {/* Header / Navbar */}
-      <header className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <header className="relative z-10 max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <Image 
             src={peterLogo} 
@@ -111,7 +116,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col-reverse md:flex-row items-center justify-between gap-10" id="about">
+      <section className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col-reverse md:flex-row items-center justify-between gap-10" id="about">
         
         {/* Text Area */}
         <div className="flex-1 text-center md:text-left space-y-5">
@@ -129,14 +134,14 @@ export default function Home() {
           <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
             <a 
               href="#projects" 
-              className="px-6 py-2.5 font-bold text-sm rounded-lg transition duration-200 hover:opacity-90"
+              className="px-6 py-2.5 font-bold text-sm rounded-lg transition duration-300 hover:scale-105 shadow-lg shadow-amber-500/10"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
               View Projects
             </a>
             <a 
               href="#contact" 
-              className="px-6 py-2.5 text-white font-semibold text-sm rounded-lg transition duration-200 hover:bg-zinc-800"
+              className="px-6 py-2.5 text-white font-semibold text-sm rounded-lg transition duration-300 hover:bg-zinc-800 hover:scale-105"
               style={{ backgroundColor: '#1C1C1C' }}
             >
               Contact Me
@@ -147,7 +152,7 @@ export default function Home() {
         {/* Profile Image Wrapper */}
         <div className="flex-1 flex justify-center items-center">
           <div 
-            className="rounded-2xl overflow-hidden shadow-2xl"
+            className="rounded-2xl overflow-hidden shadow-2xl transition duration-500 hover:scale-105"
             style={{ width: '280px', height: '280px', maxWidth: '280px', maxHeight: '280px' }}
           >
             <Image
@@ -164,7 +169,7 @@ export default function Home() {
       </section>
 
       {/* Core Services Section */}
-      <section className="py-14 px-6 max-w-6xl mx-auto" id="services">
+      <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" id="services">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Core Services</h2>
           <p className="text-gray-400 text-sm">
@@ -174,7 +179,7 @@ export default function Home() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
           {coreServices.map((service, idx) => (
-            <div key={idx} className="p-5 rounded-xl flex items-start gap-3" style={{ backgroundColor: '#1C1C1C' }}>
+            <div key={idx} className="p-5 rounded-xl flex items-start gap-3 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/5" style={{ backgroundColor: '#1C1C1C' }}>
               <span className="text-lg" style={{ color: '#D4AF37' }}>★</span>
               <p className="font-semibold text-gray-200 text-sm leading-snug">{service}</p>
             </div>
@@ -183,7 +188,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-14 px-6 max-w-6xl mx-auto" id="skills">
+      <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" id="skills">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Skills & Technical Tools</h2>
           <p className="text-gray-400 text-sm">
@@ -193,7 +198,7 @@ export default function Home() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {skillCategories.map((category, idx) => (
-            <div key={idx} className="p-6 rounded-xl" style={{ backgroundColor: '#1C1C1C' }}>
+            <div key={idx} className="p-6 rounded-xl transition duration-300 hover:-translate-y-1" style={{ backgroundColor: '#1C1C1C' }}>
               <h3 className="text-lg font-bold mb-3" style={{ color: '#D4AF37' }}>{category.title}</h3>
               <ul className="space-y-2">
                 {category.skills.map((skill, sIdx) => (
@@ -208,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* Career Vision, Values & Hobbies */}
-      <section className="py-14 px-6 max-w-6xl mx-auto">
+      <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           
           {/* Vision & Core Values */}
@@ -224,7 +229,7 @@ export default function Home() {
               <h4 className="text-base font-bold mb-3" style={{ color: '#D4AF37' }}>Core Values</h4>
               <div className="flex flex-wrap gap-2">
                 {coreValues.map((val, vIdx) => (
-                  <span key={vIdx} className="text-xs px-3 py-1.5 rounded-md text-gray-200 font-medium" style={{ backgroundColor: '#2A2A2A' }}>
+                  <span key={vIdx} className="text-xs px-3 py-1.5 rounded-md text-gray-200 font-medium transition duration-200 hover:bg-amber-500/20" style={{ backgroundColor: '#2A2A2A' }}>
                     {val}
                   </span>
                 ))}
@@ -251,7 +256,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-14 px-6 max-w-6xl mx-auto" id="projects">
+      <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" id="projects">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Featured Projects & Media Work</h2>
           <p className="text-gray-400 text-sm">
@@ -263,7 +268,7 @@ export default function Home() {
           {projects.map((project, index) => (
             <div 
               key={index} 
-              className="rounded-xl overflow-hidden shadow-lg flex flex-col justify-between transition hover:-translate-y-1"
+              className="rounded-xl overflow-hidden shadow-lg flex flex-col justify-between transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/10"
               style={{ backgroundColor: '#1C1C1C' }}
             >
               <div className="p-6">
@@ -292,7 +297,7 @@ export default function Home() {
                   href={project.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="block w-full text-center text-sm font-bold py-2.5 rounded-lg transition hover:opacity-90"
+                  className="block w-full text-center text-sm font-bold py-2.5 rounded-lg transition duration-200 hover:opacity-90"
                   style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
                 >
                   View Document / Link 🔗
@@ -304,7 +309,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section & Footer */}
-      <footer className="py-16 text-center" style={{ backgroundColor: '#141414' }} id="contact">
+      <footer className="relative z-10 py-16 text-center" style={{ backgroundColor: '#141414' }} id="contact">
         <div className="max-w-4xl mx-auto px-6 space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-white">Let's Work Together</h2>
           <p className="text-gray-300 text-sm max-w-lg mx-auto leading-relaxed">
@@ -315,7 +320,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
             <a 
               href="mailto:Obbayipeter050@gmail.com" 
-              className="w-full sm:w-auto px-6 py-3 font-bold rounded-lg shadow transition flex items-center justify-center gap-2 hover:opacity-90 text-sm"
+              className="w-full sm:w-auto px-6 py-3 font-bold rounded-lg shadow transition duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
               ✉️ Email: Obbayipeter050@gmail.com
@@ -323,7 +328,7 @@ export default function Home() {
             
             <a 
               href="tel:0707537823" 
-              className="w-full sm:w-auto px-6 py-3 text-white font-semibold rounded-lg shadow transition hover:bg-zinc-800 flex items-center justify-center gap-2 text-sm"
+              className="w-full sm:w-auto px-6 py-3 text-white font-semibold rounded-lg shadow transition duration-300 hover:bg-zinc-800 hover:scale-105 flex items-center justify-center gap-2 text-sm"
               style={{ backgroundColor: '#262626' }}
             >
               📞 Call: 0707 537823
