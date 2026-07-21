@@ -1,4 +1,6 @@
 import Image from "next/image";
+import peterProfile from "../public/peter-profile.jpg";
+import peterLogo from "../public/peter-logo.png";
 
 // Define the project structure
 interface Project {
@@ -64,16 +66,14 @@ const skillCategories = [
 ];
 
 export default function Home() {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
       
       {/* Header / Navbar */}
       <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
         <div className="flex items-center gap-3">
-          <img 
-            src={`${basePath}/peter-logo.png`} 
+          <Image 
+            src={peterLogo} 
             alt="Peter Ken Logo" 
             className="w-10 h-10 object-contain"
           />
@@ -124,10 +124,11 @@ export default function Home() {
         {/* Profile Image */}
         <div className="flex-1 flex justify-center">
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white dark:border-gray-800">
-            <img
-              src={`${basePath}/peter-profile.jpg`}
+            <Image
+              src={peterProfile}
               alt="Peter Ken Obbayi Profile Portrait"
               className="w-full h-full object-cover"
+              priority
             />
           </div>
         </div>
