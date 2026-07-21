@@ -98,14 +98,34 @@ const rotatingTitles = [
 export default function Home() {
   const whatsappNumber = "254707537823";
 
-  // Cycling Text State
+  // Intro Splash Overlay Control
+  const [showSplash, setShowSplash] = useState(true);
+  const [fadeSplash, setFadeSplash] = useState(false);
+
+  // Cycling Title Control
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Timed Splash Screen Effect
+  useEffect(() => {
+    const fadeTimer = setTimeout(() => {
+      setFadeSplash(true);
+    }, 2200); // Start fade-out at 2.2 seconds
+
+    const hideTimer = setTimeout(() => {
+      setShowSplash(false);
+    }, 2800); // Completely unmount overlay at 2.8 seconds
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
+  // Typewriter Title Cycling Effect
   useEffect(() => {
     const currentFullTitle = rotatingTitles[titleIndex];
-    
     const typingSpeed = isDeleting ? 40 : 80;
     const pauseTime = isDeleting ? 0 : 2000;
 
@@ -129,6 +149,25 @@ export default function Home() {
   return (
     <main className="min-h-screen text-white font-sans relative overflow-hidden" style={{ backgroundColor: '#0B0B0B' }}>
       
+      {/* Intro Splash Screen */}
+      {showSplash && (
+        <div 
+          className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-700 ${
+            fadeSplash ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+          style={{ backgroundColor: '#0B0B0B' }}
+        >
+          <div className="text-center px-6 space-y-3 animate-pulse">
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-widest text-white uppercase">
+              PETER KEN OBBAYI
+            </h1>
+            <p className="text-sm md:text-lg font-medium tracking-widest uppercase" style={{ color: '#D4AF37' }}>
+              Creative Portfolio
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Animated Ambient Glows */}
       <div className="absolute top-[-100px] left-[-100px] w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
       <div className="absolute top-1/3 right-[-100px] w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
@@ -139,7 +178,7 @@ export default function Home() {
         href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20visited%20your%20website%20and%20would%20like%20to%20connect.`}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 transition duration-300 hover:scale-105"
+        className="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 transition duration-300 hover:scale-105"
         aria-label="Contact on WhatsApp"
       >
         <span className="text-xl">💬</span>
