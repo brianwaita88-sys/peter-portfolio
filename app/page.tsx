@@ -83,13 +83,27 @@ const hobbies = [
 ];
 
 export default function Home() {
+  const whatsappNumber = "254707537823";
+
   return (
     <main className="min-h-screen text-white font-sans relative overflow-hidden" style={{ backgroundColor: '#0B0B0B' }}>
       
-      {/* Animated Background Lights */}
+      {/* Animated Ambient Glows */}
       <div className="absolute top-[-100px] left-[-100px] w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
       <div className="absolute top-1/3 right-[-100px] w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
       <div className="absolute bottom-1/4 left-[-100px] w-96 h-96 bg-amber-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '4s' }}></div>
+
+      {/* Floating WhatsApp Quick-Booking Button */}
+      <a 
+        href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about%20booking%20your%20services.`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 transition duration-300 hover:scale-105"
+        aria-label="Chat and book on WhatsApp"
+      >
+        <span className="text-xl">💬</span>
+        <span className="hidden sm:inline text-sm">Book on WhatsApp</span>
+      </a>
 
       {/* Header / Navbar */}
       <header className="relative z-10 max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
@@ -140,11 +154,12 @@ export default function Home() {
               View Projects
             </a>
             <a 
-              href="#contact" 
-              className="px-6 py-2.5 text-white font-semibold text-sm rounded-lg transition duration-300 hover:bg-zinc-800 hover:scale-105"
-              style={{ backgroundColor: '#1C1C1C' }}
+              href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20book%20a%20consultation%20service.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-lg transition duration-300 hover:scale-105 flex items-center gap-2"
             >
-              Contact Me
+              💬 Book via WhatsApp
             </a>
           </div>
         </div>
@@ -168,20 +183,31 @@ export default function Home() {
 
       </section>
 
-      {/* Core Services Section */}
+      {/* Core Services Section with Direct WhatsApp Booking */}
       <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" id="services">
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Core Services</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Core Services & Booking</h2>
           <p className="text-gray-400 text-sm">
-            End-to-end media production, content strategy, and digital creation solutions.
+            Select a service below to directly schedule and book a project on WhatsApp.
           </p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
           {coreServices.map((service, idx) => (
-            <div key={idx} className="p-5 rounded-xl flex items-start gap-3 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/5" style={{ backgroundColor: '#1C1C1C' }}>
-              <span className="text-lg" style={{ color: '#D4AF37' }}>★</span>
-              <p className="font-semibold text-gray-200 text-sm leading-snug">{service}</p>
+            <div key={idx} className="p-6 rounded-xl flex flex-col justify-between space-y-4 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/5" style={{ backgroundColor: '#1C1C1C' }}>
+              <div className="flex items-start gap-3">
+                <span className="text-lg" style={{ color: '#D4AF37' }}>★</span>
+                <p className="font-bold text-gray-100 text-base leading-snug">{service}</p>
+              </div>
+
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20book%20your%20service:%20"${encodeURIComponent(service)}"`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center text-xs font-bold py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition duration-200 flex items-center justify-center gap-1.5"
+              >
+                📅 Book Service on WhatsApp
+              </a>
             </div>
           ))}
         </div>
@@ -313,17 +339,26 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6 space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-white">Let's Work Together</h2>
           <p className="text-gray-300 text-sm max-w-lg mx-auto leading-relaxed">
-            Have a project in mind or want to collaborate on stories and digital experiences? Get in touch today.
+            Have a project in mind or want to book services? Get in touch today.
           </p>
           
-          {/* Action Buttons for Direct Email & Call */}
+          {/* Action Buttons for WhatsApp, Email & Phone */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
+            <a 
+              href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20book%20a%20service.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-6 py-3 font-bold rounded-lg shadow transition duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm bg-emerald-600 text-white hover:bg-emerald-500"
+            >
+              💬 WhatsApp Booking
+            </a>
+
             <a 
               href="mailto:Obbayipeter050@gmail.com" 
               className="w-full sm:w-auto px-6 py-3 font-bold rounded-lg shadow transition duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm"
               style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
             >
-              ✉️ Email: Obbayipeter050@gmail.com
+              ✉️ Email Direct
             </a>
             
             <a 
