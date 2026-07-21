@@ -51,8 +51,8 @@ const rotatingTitles = [
 
 export default function Home() {
   const whatsappNumber = "254707537823";
-  // Peter's Direct Google Drive Portfolio Link
-  const driveFolderLink = "https://drive.google.com/drive/u/0/mobile/my-drive?pli=1";
+  // Peter's Shared Google Drive Folder Link
+  const driveFolderLink = "https://drive.google.com/drive/folders/1T1pnLSosuZzPWkCvZGXqI7dcOThmAoPb?usp=sharing";
 
   // Intro Splash Overlay Control
   const [showSplash, setShowSplash] = useState(true);
