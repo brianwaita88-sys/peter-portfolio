@@ -6,6 +6,17 @@ import AiAssistant from "./components/AiAssistant";
 import peterProfile from "../public/peter-profile.jpg";
 import peterLogo from "../public/peter-logo.png";
 
+// List of your 7 background images in the public folder
+const bgImages = [
+  "/bg-1.jpg",
+  "/bg-2.jpg",
+  "/bg-3.jpg",
+  "/bg-4.jpg",
+  "/bg-5.jpg",
+  "/bg-6.jpg",
+  "/bg-7.jpg",
+];
+
 const coreServices = [
   "Corporate Video Production & Videography",
   "Video Editing & Color Grading",
@@ -83,6 +94,17 @@ export default function Home() {
 
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  // Background Carousel State
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  // Automatic Background Switcher every 6 seconds
+  useEffect(() => {
+    const bgInterval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % bgImages.length);
+    }, 6000);
+    return () => clearInterval(bgInterval);
+  }, []);
+
   useEffect(() => {
     const fadeTimer = setTimeout(() => {
       setFadeSplash(true);
@@ -146,9 +168,32 @@ export default function Home() {
         </div>
       )}
 
-      {/* Background Glows */}
-      <div className="absolute top-[-100px] left-[-100px] w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
-      <div className="absolute top-1/3 right-[-100px] w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }}></div>
+      {/* ================= 7-PICTURE ROTATING BACKGROUND ================= */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        
+        {/* Preload and fade smoothly between all 7 images */}
+        {bgImages.map((src, index) => (
+          <div
+            key={src}
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
+              index === currentBgIndex ? "opacity-25 scale-105" : "opacity-0 scale-100"
+            }`}
+            style={{
+              backgroundImage: `url('${src}')`,
+              transitionProperty: "opacity, transform",
+              transitionDuration: "1500ms",
+            }}
+          />
+        ))}
+
+        {/* Gradient Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/80 via-[#0B0B0B]/70 to-[#0B0B0B]"></div>
+
+        {/* Ambient Gold & Red Highlights */}
+        <div className="absolute top-[-120px] left-[-120px] w-[450px] h-[450px] bg-amber-500/10 rounded-full blur-[120px]"></div>
+        <div className="absolute top-[40%] right-[-150px] w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[140px]"></div>
+      </div>
+      {/* ================================================================= */}
 
       {/* Floating WhatsApp Action */}
       <a 
@@ -163,7 +208,7 @@ export default function Home() {
       </a>
 
       {/* Header Bar */}
-      <header className="relative z-10 max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <header className="relative z-10 max-w-6xl mx-auto px-6 py-5 flex justify-between items-center backdrop-blur-md bg-zinc-950/40 rounded-b-2xl border-b border-zinc-800/50">
         <div className="flex items-center gap-3">
           <Image 
             src={peterLogo} 
@@ -226,7 +271,7 @@ export default function Home() {
 
         <div className="flex-1 flex justify-center items-center">
           <div 
-            className="rounded-2xl overflow-hidden shadow-2xl transition duration-500 hover:scale-105"
+            className="rounded-2xl overflow-hidden shadow-2xl transition duration-500 hover:scale-105 border border-amber-500/30"
             style={{ width: '280px', height: '280px', maxWidth: '280px', maxHeight: '280px' }}
           >
             <Image
@@ -252,7 +297,7 @@ export default function Home() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
           {coreServices.map((service, idx) => (
-            <div key={idx} className="p-6 rounded-xl flex flex-col justify-between space-y-4 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/5" style={{ backgroundColor: '#1C1C1C' }}>
+            <div key={idx} className="p-6 rounded-xl flex flex-col justify-between space-y-4 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/5 border border-zinc-800/80 backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
               <div className="flex items-start gap-3">
                 <span className="text-lg" style={{ color: '#D4AF37' }}>★</span>
                 <p className="font-bold text-gray-100 text-base leading-snug">{service}</p>
@@ -281,7 +326,7 @@ export default function Home() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {skillCategories.map((category, idx) => (
-            <div key={idx} className="p-6 rounded-xl transition duration-300 hover:-translate-y-1" style={{ backgroundColor: '#1C1C1C' }}>
+            <div key={idx} className="p-6 rounded-xl transition duration-300 hover:-translate-y-1 border border-zinc-800/80 backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
               <h3 className="text-lg font-bold mb-3" style={{ color: '#D4AF37' }}>{category.title}</h3>
               <ul className="space-y-2">
                 {category.skills.map((skill, sIdx) => (
@@ -298,7 +343,7 @@ export default function Home() {
       {/* Vision & Values */}
       <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-          <div className="p-6 rounded-xl space-y-5" style={{ backgroundColor: '#1C1C1C' }}>
+          <div className="p-6 rounded-xl space-y-5 border border-zinc-800/80 backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
             <div>
               <h3 className="text-xl font-bold mb-2 text-white">Career Vision</h3>
               <p className="text-gray-300 text-sm leading-relaxed">
@@ -310,7 +355,7 @@ export default function Home() {
               <h4 className="text-base font-bold mb-3" style={{ color: '#D4AF37' }}>Core Values</h4>
               <div className="flex flex-wrap gap-2">
                 {coreValues.map((val, vIdx) => (
-                  <span key={vIdx} className="text-xs px-3 py-1.5 rounded-md text-gray-200 font-medium transition duration-200 hover:bg-amber-500/20" style={{ backgroundColor: '#2A2A2A' }}>
+                  <span key={vIdx} className="text-xs px-3 py-1.5 rounded-md text-gray-200 font-medium transition duration-200 hover:bg-amber-500/20 border border-zinc-700/50" style={{ backgroundColor: '#2A2A2A' }}>
                     {val}
                   </span>
                 ))}
@@ -318,7 +363,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="p-6 rounded-xl space-y-3" style={{ backgroundColor: '#1C1C1C' }}>
+          <div className="p-6 rounded-xl space-y-3 border border-zinc-800/80 backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
             <h3 className="text-xl font-bold text-white">Hobbies & Interests</h3>
             <p className="text-gray-400 text-xs mb-3">
               Creative pursuits that fuel passion, inspiration, and community impact.
@@ -346,9 +391,9 @@ export default function Home() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           
           {/* Google Drive Vault */}
-          <div className="p-8 rounded-2xl text-center space-y-5 border border-zinc-800 transition duration-300 hover:border-amber-500/40 flex flex-col justify-between" style={{ backgroundColor: '#1C1C1C' }}>
+          <div className="p-8 rounded-2xl text-center space-y-5 border border-zinc-800/80 transition duration-300 hover:border-amber-500/40 flex flex-col justify-between backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
             <div className="space-y-4">
-              <div className="inline-block p-4 rounded-full bg-amber-500/10">
+              <div className="inline-block p-4 rounded-full bg-amber-500/10 border border-amber-500/20">
                 <span className="text-3xl">📂</span>
               </div>
               <h3 className="text-xl font-bold text-white">Google Drive Vault</h3>
@@ -368,9 +413,9 @@ export default function Home() {
           </div>
 
           {/* YouTube Channel */}
-          <div className="p-8 rounded-2xl text-center space-y-5 border border-zinc-800 transition duration-300 hover:border-red-500/40 flex flex-col justify-between" style={{ backgroundColor: '#1C1C1C' }}>
+          <div className="p-8 rounded-2xl text-center space-y-5 border border-zinc-800/80 transition duration-300 hover:border-red-500/40 flex flex-col justify-between backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
             <div className="space-y-4">
-              <div className="inline-block p-4 rounded-full bg-red-500/10">
+              <div className="inline-block p-4 rounded-full bg-red-500/10 border border-red-500/20">
                 <span className="text-3xl">📺</span>
               </div>
               <h3 className="text-xl font-bold text-white">DJ Vyro 254 YouTube Channel</h3>
@@ -404,8 +449,8 @@ export default function Home() {
           {supportFaqs.map((faq, idx) => (
             <div 
               key={idx} 
-              className="rounded-xl overflow-hidden transition border border-zinc-800/80"
-              style={{ backgroundColor: '#1C1C1C' }}
+              className="rounded-xl overflow-hidden transition border border-zinc-800/80 backdrop-blur-md"
+              style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}
             >
               <button
                 onClick={() => toggleFaq(idx)}
@@ -428,7 +473,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 py-16 text-center" style={{ backgroundColor: '#141414' }} id="contact">
+      <footer className="relative z-10 py-16 text-center border-t border-zinc-900" style={{ backgroundColor: '#141414' }} id="contact">
         <div className="max-w-4xl mx-auto px-6 space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-white">Let's Work Together</h2>
           <p className="text-gray-300 text-sm max-w-lg mx-auto leading-relaxed">
