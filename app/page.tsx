@@ -6,15 +6,17 @@ import AiAssistant from "./components/AiAssistant";
 import peterProfile from "../public/peter-profile.jpg";
 import peterLogo from "../public/peter-logo.png";
 
-// List of your 7 background images in the public folder
+// GitHub Pages basePath configuration
+const basePath = process.env.NODE_ENV === "production" ? "/peter-portfolio" : "";
+
 const bgImages = [
-  "/bg-1.jpg",
-  "/bg-2.jpg",
-  "/bg-3.jpg",
-  "/bg-4.jpg",
-  "/bg-5.jpg",
-  "/bg-6.jpg",
-  "/bg-7.jpg",
+  `${basePath}/bg-1.jpg`,
+  `${basePath}/bg-2.jpg`,
+  `${basePath}/bg-3.jpg`,
+  `${basePath}/bg-4.jpg`,
+  `${basePath}/bg-5.jpg`,
+  `${basePath}/bg-6.jpg`,
+  `${basePath}/bg-7.jpg`,
 ];
 
 const coreServices = [
@@ -171,15 +173,15 @@ export default function Home() {
       {/* ================= 7-PICTURE ROTATING BACKGROUND ================= */}
       <div className="fixed inset-0 pointer-events-none z-0">
         
-        {/* Preload and fade smoothly between all 7 images */}
+        {/* Preload and fade smoothly between all 7 images with full base path support */}
         {bgImages.map((src, index) => (
           <div
             key={src}
             className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
-              index === currentBgIndex ? "opacity-25 scale-105" : "opacity-0 scale-100"
+              index === currentBgIndex ? "opacity-35 scale-105" : "opacity-0 scale-100"
             }`}
             style={{
-              backgroundImage: `url('${src}')`,
+              backgroundImage: `url("${src}")`,
               transitionProperty: "opacity, transform",
               transitionDuration: "1500ms",
             }}
@@ -187,7 +189,7 @@ export default function Home() {
         ))}
 
         {/* Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/80 via-[#0B0B0B]/70 to-[#0B0B0B]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/75 via-[#0B0B0B]/60 to-[#0B0B0B]"></div>
 
         {/* Ambient Gold & Red Highlights */}
         <div className="absolute top-[-120px] left-[-120px] w-[450px] h-[450px] bg-amber-500/10 rounded-full blur-[120px]"></div>
