@@ -173,12 +173,12 @@ export default function Home() {
       {/* ================= 7-PICTURE ROTATING BACKGROUND ================= */}
       <div className="fixed inset-0 pointer-events-none z-0">
         
-        {/* Preload and fade smoothly between all 7 images with full base path support */}
+        {/* Preload and fade smoothly between all 7 images with enhanced visibility */}
         {bgImages.map((src, index) => (
           <div
             key={src}
             className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
-              index === currentBgIndex ? "opacity-35 scale-105" : "opacity-0 scale-100"
+              index === currentBgIndex ? "opacity-60 scale-105" : "opacity-0 scale-100"
             }`}
             style={{
               backgroundImage: `url("${src}")`,
@@ -188,12 +188,12 @@ export default function Home() {
           />
         ))}
 
-        {/* Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/75 via-[#0B0B0B]/60 to-[#0B0B0B]"></div>
+        {/* Lighter Gradient Overlay so background pictures are clearly visible */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/50 via-[#0B0B0B]/35 to-[#0B0B0B]/85"></div>
 
         {/* Ambient Gold & Red Highlights */}
-        <div className="absolute top-[-120px] left-[-120px] w-[450px] h-[450px] bg-amber-500/10 rounded-full blur-[120px]"></div>
-        <div className="absolute top-[40%] right-[-150px] w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[140px]"></div>
+        <div className="absolute top-[-120px] left-[-120px] w-[450px] h-[450px] bg-amber-500/15 rounded-full blur-[120px]"></div>
+        <div className="absolute top-[40%] right-[-150px] w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[140px]"></div>
       </div>
       {/* ================================================================= */}
 
