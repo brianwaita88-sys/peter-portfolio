@@ -182,7 +182,7 @@ export default function Home() {
   return (
     <main className="min-h-screen text-gray-100 font-sans relative overflow-x-hidden selection:bg-amber-500 selection:text-black" style={{ backgroundColor: '#09090B' }}>
       
-      {/* Intro Splash Screen with Logo */}
+      {/* Intro Splash Screen with Prominent Enlarged Logo */}
       {showSplash && (
         <div 
           className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-700 ${
@@ -190,16 +190,18 @@ export default function Home() {
           }`}
           style={{ backgroundColor: '#09090B' }}
         >
-          <div className="text-center px-6 space-y-4 flex flex-col items-center animate-pulse">
-            <Image 
-              src={peterLogo} 
-              alt="Peter Ken Logo" 
-              width={220}
-              height={70}
-              className="w-auto h-16 md:h-20 object-contain"
-              priority
-            />
-            <p className="text-xs md:text-sm font-semibold tracking-widest uppercase text-amber-400">
+          <div className="text-center px-6 space-y-6 flex flex-col items-center animate-pulse">
+            <div className="relative w-72 md:w-96 max-w-[85vw] flex justify-center">
+              <Image 
+                src={peterLogo} 
+                alt="Peter Ken Logo" 
+                width={400}
+                height={130}
+                className="w-auto h-28 md:h-36 object-contain drop-shadow-[0_0_25px_rgba(245,158,11,0.25)]"
+                priority
+              />
+            </div>
+            <p className="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-amber-400">
               Media Specialist & Creative Portfolio
             </p>
           </div>
@@ -275,7 +277,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Improved Hero Section */}
+      {/* Hero Section */}
       <section className="relative z-10 max-w-6xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28 flex flex-col-reverse md:flex-row items-center justify-between gap-12" id="about">
         <div className="flex-1 text-center md:text-left space-y-6">
           <div className="inline-block px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold tracking-wider uppercase backdrop-blur-sm">
@@ -398,7 +400,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects & Real Screenshots Showcase */}
+      {/* Featured Projects Showcase */}
       <section className="relative z-10 py-20 md:py-28 px-6 max-w-6xl mx-auto border-t border-zinc-800/40" id="projects">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Featured Media Vault & Projects</h2>
@@ -534,7 +536,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Comprehensive Footer & Contact Section */}
+      {/* Footer & Contact Section */}
       <footer className="relative z-10 border-t border-zinc-800/80 bg-zinc-950 pt-20 pb-12" id="contact">
         <div className="max-w-6xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-xl mx-auto space-y-4">
