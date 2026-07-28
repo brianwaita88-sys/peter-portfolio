@@ -182,7 +182,7 @@ export default function Home() {
   return (
     <main className="min-h-screen text-gray-100 font-sans relative overflow-x-hidden selection:bg-amber-500 selection:text-black" style={{ backgroundColor: '#09090B' }}>
       
-      {/* Intro Splash Screen */}
+      {/* Intro Splash Screen with Logo */}
       {showSplash && (
         <div 
           className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-700 ${
@@ -190,10 +190,15 @@ export default function Home() {
           }`}
           style={{ backgroundColor: '#09090B' }}
         >
-          <div className="text-center px-6 space-y-3 animate-pulse">
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-widest text-white uppercase">
-              PETER KEN OBBAYI
-            </h1>
+          <div className="text-center px-6 space-y-4 flex flex-col items-center animate-pulse">
+            <Image 
+              src={peterLogo} 
+              alt="Peter Ken Logo" 
+              width={220}
+              height={70}
+              className="w-auto h-16 md:h-20 object-contain"
+              priority
+            />
             <p className="text-xs md:text-sm font-semibold tracking-widest uppercase text-amber-400">
               Media Specialist & Creative Portfolio
             </p>
@@ -329,7 +334,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section with Spacing & Grid */}
+      {/* Services Section */}
       <section className="relative z-10 py-20 md:py-28 px-6 max-w-6xl mx-auto border-t border-zinc-800/40" id="services">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Core Services</h2>
