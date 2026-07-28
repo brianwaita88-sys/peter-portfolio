@@ -20,12 +20,30 @@ const bgImages = [
 ];
 
 const coreServices = [
-  "Corporate Video Production & Videography",
-  "Video Editing & Color Grading",
-  "Digital Marketing & Social Media Strategy",
-  "Branding, Content Strategy & YouTube Growth",
-  "Photography, Livestreaming & Podcast Production",
-  "Music Production, DJ Services & Creative Consulting",
+  {
+    title: "Corporate Video & Videography",
+    desc: "High-impact video coverage, interviews, and brand storytelling crafted for digital engagement.",
+  },
+  {
+    title: "Video Editing & Color Grading",
+    desc: "Seamless post-production, dynamic transitions, cinematic color grading, and audio polishing.",
+  },
+  {
+    title: "Digital Marketing & Strategy",
+    desc: "Data-driven social media growth, search engine positioning, and targeted content planning.",
+  },
+  {
+    title: "Branding & YouTube Growth",
+    desc: "Comprehensive brand identity development, video optimization, and audience channel expansion.",
+  },
+  {
+    title: "Photography & Livestreaming",
+    desc: "Studio-quality event photography, portraiture, and multi-camera live broadcast setups.",
+  },
+  {
+    title: "Music Production & DJ Services",
+    desc: "Custom audio scoring, event DJ performances, creative music mixing, and audio production.",
+  },
 ];
 
 const skillCategories = [
@@ -40,6 +58,25 @@ const skillCategories = [
   {
     title: "Audio & Web Development",
     skills: ["Music Production", "FL Studio", "Podcast Production", "HTML5 / CSS3 / JavaScript", "React & Next.js", "Git & GitHub"],
+  },
+];
+
+const featuredProjects = [
+  {
+    title: "Media Production & Portfolio Vault",
+    description: "Centralized Google Drive repository hosting full video reels, high-resolution photo archives, journalism documentations, and raw media project deliverables.",
+    tags: ["Google Drive", "Videography", "Media Vault"],
+    demoUrl: "https://drive.google.com/drive/folders/1T1pnLSosuZzPWkCvZGXqI7dcOThmAoPb?usp=sharing",
+    githubUrl: "https://github.com/brianwaita88-sys/peter-portfolio",
+    icon: "📂",
+  },
+  {
+    title: "DJ Vyro 254 Official Platform",
+    description: "Creative music hub and YouTube platform featuring live DJ mixes, Gospel audio-visual praise sessions, and video production projects.",
+    tags: ["YouTube", "Music Production", "Content Creation"],
+    demoUrl: "https://youtube.com/@djvyro_ke?si=GFZA-4EX_v5sIcVT",
+    githubUrl: "https://github.com/brianwaita88-sys/peter-portfolio",
+    icon: "📺",
   },
 ];
 
@@ -66,15 +103,15 @@ const rotatingTitles = [
 const supportFaqs = [
   {
     question: "How do I book Peter for a video or photography shoot?",
-    answer: "You can initiate a booking directly via WhatsApp or Email. We usually start with a brief concept discussion, agree on project deliverables and timelines, and confirm the date once a commitment deposit is made."
+    answer: "You can initiate a booking directly via WhatsApp or Email. We start with a brief concept discussion, agree on project deliverables and timelines, and confirm the date once a deposit is received."
   },
   {
     question: "What is the standard turnaround time for video editing & audio projects?",
-    answer: "Turnaround depends on project scope. Short video reels and social media edits take 24–48 hours, while full event videography, corporate packages, or audio mastering typically take 3–7 business days."
+    answer: "Turnaround depends on project scope. Short video reels take 24–48 hours, while full event videography, corporate packages, or audio mastering typically take 3–7 business days."
   },
   {
     question: "How should I send large raw video/audio files for editing?",
-    answer: "You can upload raw assets directly to Google Drive, WeTransfer, or Dropbox and share the folder link via WhatsApp or Email."
+    answer: "You can upload raw assets directly to Google Drive, WeTransfer, or Dropbox and share the folder access link via WhatsApp or Email."
   },
   {
     question: "Does Peter offer custom packages for events and long-term retainer work?",
@@ -95,11 +132,9 @@ export default function Home() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-
-  // Background Carousel State
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
-  // Automatic Background Switcher every 6 seconds
+  // Dynamic background carousel
   useEffect(() => {
     const bgInterval = setInterval(() => {
       setCurrentBgIndex((prevIndex) => (prevIndex + 1) % bgImages.length);
@@ -107,25 +142,21 @@ export default function Home() {
     return () => clearInterval(bgInterval);
   }, []);
 
+  // Intro Splash screen timer
   useEffect(() => {
-    const fadeTimer = setTimeout(() => {
-      setFadeSplash(true);
-    }, 2200);
-
-    const hideTimer = setTimeout(() => {
-      setShowSplash(false);
-    }, 2800);
-
+    const fadeTimer = setTimeout(() => setFadeSplash(true), 2000);
+    const hideTimer = setTimeout(() => setShowSplash(false), 2600);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(hideTimer);
     };
   }, []);
 
+  // Typing animation
   useEffect(() => {
     const currentFullTitle = rotatingTitles[titleIndex];
-    const typingSpeed = isDeleting ? 40 : 80;
-    const pauseTime = isDeleting ? 0 : 2000;
+    const typingSpeed = isDeleting ? 35 : 75;
+    const pauseTime = isDeleting ? 0 : 2200;
 
     const timeout = setTimeout(() => {
       if (!isDeleting && displayText === currentFullTitle) {
@@ -149,7 +180,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen text-white font-sans relative overflow-hidden" style={{ backgroundColor: '#0B0B0B' }}>
+    <main className="min-h-screen text-gray-100 font-sans relative overflow-x-hidden selection:bg-amber-500 selection:text-black" style={{ backgroundColor: '#09090B' }}>
       
       {/* Intro Splash Screen */}
       {showSplash && (
@@ -157,28 +188,26 @@ export default function Home() {
           className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-700 ${
             fadeSplash ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}
-          style={{ backgroundColor: '#0B0B0B' }}
+          style={{ backgroundColor: '#09090B' }}
         >
           <div className="text-center px-6 space-y-3 animate-pulse">
             <h1 className="text-3xl md:text-5xl font-extrabold tracking-widest text-white uppercase">
               PETER KEN OBBAYI
             </h1>
-            <p className="text-sm md:text-lg font-medium tracking-widest uppercase" style={{ color: '#D4AF37' }}>
-              Creative Portfolio
+            <p className="text-xs md:text-sm font-semibold tracking-widest uppercase text-amber-400">
+              Media Specialist & Creative Portfolio
             </p>
           </div>
         </div>
       )}
 
-      {/* ================= 7-PICTURE ROTATING BACKGROUND ================= */}
+      {/* Dynamic Background Images with Smooth Overlay */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        
-        {/* Preload and fade smoothly between all 7 images with enhanced visibility */}
         {bgImages.map((src, index) => (
           <div
             key={src}
-            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
-              index === currentBgIndex ? "opacity-60 scale-105" : "opacity-0 scale-100"
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out ${
+              index === currentBgIndex ? "opacity-65 scale-105" : "opacity-0 scale-100"
             }`}
             style={{
               backgroundImage: `url("${src}")`,
@@ -188,129 +217,146 @@ export default function Home() {
           />
         ))}
 
-        {/* Lighter Gradient Overlay so background pictures are clearly visible */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/50 via-[#0B0B0B]/35 to-[#0B0B0B]/85"></div>
-
-        {/* Ambient Gold & Red Highlights */}
-        <div className="absolute top-[-120px] left-[-120px] w-[450px] h-[450px] bg-amber-500/15 rounded-full blur-[120px]"></div>
-        <div className="absolute top-[40%] right-[-150px] w-[500px] h-[500px] bg-red-600/15 rounded-full blur-[140px]"></div>
+        {/* Ambient Gradient Overlays for High Contrast Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#09090B]/60 via-[#09090B]/40 to-[#09090B]/90"></div>
+        <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[140px]"></div>
+        <div className="absolute top-[45%] right-[-120px] w-[550px] h-[550px] bg-red-600/10 rounded-full blur-[150px]"></div>
       </div>
-      {/* ================================================================= */}
 
-      {/* Floating WhatsApp Action */}
+      {/* Floating WhatsApp Action Button */}
       <a 
         href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20visited%20your%20website%20and%20would%20like%20to%20connect.`}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 transition duration-300 hover:scale-105"
-        aria-label="Contact on WhatsApp"
+        className="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 transition duration-300 hover:scale-110 active:scale-95"
+        aria-label="Contact Peter on WhatsApp"
       >
         <span className="text-xl">💬</span>
-        <span className="hidden sm:inline text-sm">WhatsApp</span>
+        <span className="hidden sm:inline text-xs uppercase tracking-wider">WhatsApp</span>
       </a>
 
-      {/* Header Bar */}
-      <header className="relative z-10 max-w-6xl mx-auto px-6 py-5 flex justify-between items-center backdrop-blur-md bg-zinc-950/40 rounded-b-2xl border-b border-zinc-800/50">
-        <div className="flex items-center gap-3">
-          <Image 
-            src={peterLogo} 
-            alt="Peter Ken Logo" 
-            width={120}
-            height={36}
-            style={{ width: 'auto', height: '36px', objectFit: 'contain' }}
-            priority
-          />
-          <span className="font-bold text-sm tracking-wider uppercase hidden sm:inline text-white">
-            Peter Ken Obbayi
-          </span>
+      {/* Sticky Header Navigation */}
+      <header className="sticky top-0 z-40 backdrop-blur-xl bg-zinc-950/70 border-b border-zinc-800/60 transition-all duration-300">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <a href="#about" className="flex items-center gap-3 group">
+            <Image 
+              src={peterLogo} 
+              alt="Peter Ken Logo" 
+              width={120}
+              height={36}
+              className="w-auto h-9 object-contain group-hover:scale-105 transition-transform duration-300"
+              priority
+            />
+            <span className="font-bold text-xs tracking-widest uppercase hidden sm:inline text-gray-200 group-hover:text-amber-400 transition-colors">
+              Peter Ken Obbayi
+            </span>
+          </a>
+
+          <nav className="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-wider text-gray-300">
+            <a href="#about" className="hover:text-amber-400 transition-colors">About</a>
+            <a href="#services" className="hover:text-amber-400 transition-colors">Services</a>
+            <a href="#skills" className="hover:text-amber-400 transition-colors">Skills</a>
+            <a href="#projects" className="hover:text-amber-400 transition-colors">Projects</a>
+            <a href="#support" className="hover:text-amber-400 transition-colors">Support Hub</a>
+            <a href="#contact" className="hover:text-amber-400 transition-colors">Contact</a>
+          </nav>
+
+          <a 
+            href="#contact" 
+            className="text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-lg bg-amber-500 text-black hover:bg-amber-400 transition-all shadow-md shadow-amber-500/10 hover:scale-105 active:scale-95"
+          >
+            Hire Me
+          </a>
         </div>
-        <nav className="flex gap-6 text-sm font-semibold">
-          <a href="#about" className="hover:text-amber-400 transition text-gray-300">About</a>
-          <a href="#services" className="hover:text-amber-400 transition text-gray-300">Services</a>
-          <a href="#skills" className="hover:text-amber-400 transition text-gray-300">Skills</a>
-          <a href="#projects" className="hover:text-amber-400 transition text-gray-300">Projects</a>
-          <a href="#support" className="hover:text-amber-400 transition text-gray-300">Support Hub</a>
-          <a href="#contact" className="hover:text-amber-400 transition text-gray-300">Contact</a>
-        </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col-reverse md:flex-row items-center justify-between gap-10" id="about">
-        <div className="flex-1 text-center md:text-left space-y-5">
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
-            Peter Ken Obbayi
+      {/* Improved Hero Section */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28 flex flex-col-reverse md:flex-row items-center justify-between gap-12" id="about">
+        <div className="flex-1 text-center md:text-left space-y-6">
+          <div className="inline-block px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold tracking-wider uppercase backdrop-blur-sm">
+            Journalism & Mass Communication Professional
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Crafting Visual Stories That <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500">Inspire & Engage</span>
           </h1>
           
-          <p className="text-lg md:text-2xl font-bold min-h-[36px]" style={{ color: '#D4AF37' }}>
-            I am a <span className="underline decoration-amber-500/50 underline-offset-4">{displayText}</span>
-            <span className="animate-ping ml-1 text-white inline-block">|</span>
+          <p className="text-lg md:text-2xl font-bold min-h-[40px] text-amber-400">
+            I am a <span className="underline decoration-amber-500/60 underline-offset-8 text-white">{displayText}</span>
+            <span className="animate-ping ml-1 text-amber-400 inline-block">|</span>
           </p>
 
-          <p className="text-gray-300 max-w-lg text-sm md:text-base leading-relaxed">
-            A passionate digital media professional and creative storyteller pursuing a B.A. in Journalism and Mass Communication at Kibabii University. I combine creativity, technology, and strategic thinking to help brands communicate effectively.
+          <p className="text-gray-300 max-w-xl text-sm md:text-base leading-relaxed">
+            Combining journalism expertise, high-end video editing, music production, and digital strategy to help brands, creators, and organizations tell powerful stories that leave a lasting impact.
           </p>
           
-          <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
+          <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
             <a 
-              href={driveFolderLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 font-bold text-sm rounded-lg transition duration-300 hover:scale-105 shadow-lg shadow-amber-500/10"
-              style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
+              href="#projects"
+              className="px-7 py-3 font-bold text-xs uppercase tracking-wider rounded-xl transition duration-300 hover:scale-105 shadow-xl shadow-amber-500/10 bg-amber-400 text-black hover:bg-amber-300 flex items-center gap-2"
             >
-              View Portfolio Drive
+              <span>Explore Projects</span> ➔
             </a>
             <a 
               href={youtubeLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2.5 font-bold text-sm rounded-lg transition duration-300 hover:scale-105 bg-red-600 text-white hover:bg-red-500"
+              className="px-7 py-3 font-bold text-xs uppercase tracking-wider rounded-xl transition duration-300 hover:scale-105 bg-red-600/90 text-white hover:bg-red-600 flex items-center gap-2 border border-red-500/40"
             >
-              📺 YouTube Mixes
+              📺 Watch YouTube Mixes
             </a>
           </div>
         </div>
 
+        {/* Profile Card with Subtle Glow */}
         <div className="flex-1 flex justify-center items-center">
-          <div 
-            className="rounded-2xl overflow-hidden shadow-2xl transition duration-500 hover:scale-105 border border-amber-500/30"
-            style={{ width: '280px', height: '280px', maxWidth: '280px', maxHeight: '280px' }}
-          >
-            <Image
-              src={peterProfile}
-              alt="Peter Ken Obbayi Profile Portrait"
-              width={280}
-              height={280}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              priority
-            />
+          <div className="relative group">
+            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-amber-500 to-red-600 opacity-30 blur-xl group-hover:opacity-60 transition duration-500"></div>
+            <div 
+              className="relative rounded-2xl overflow-hidden shadow-2xl transition duration-500 group-hover:scale-[1.02] border border-amber-500/40 bg-zinc-900"
+              style={{ width: '300px', height: '300px' }}
+            >
+              <Image
+                src={peterProfile}
+                alt="Peter Ken Obbayi Portrait"
+                width={300}
+                height={300}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" id="services">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Core Services</h2>
-          <p className="text-gray-400 text-sm">
-            End-to-end media production, content strategy, and digital creation solutions.
+      {/* Services Section with Spacing & Grid */}
+      <section className="relative z-10 py-20 md:py-28 px-6 max-w-6xl mx-auto border-t border-zinc-800/40" id="services">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Core Services</h2>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            End-to-end media production, content strategy, and digital creation solutions tailored to your unique brand vision.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {coreServices.map((service, idx) => (
-            <div key={idx} className="p-6 rounded-xl flex flex-col justify-between space-y-4 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/5 border border-zinc-800/80 backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
-              <div className="flex items-start gap-3">
-                <span className="text-lg" style={{ color: '#D4AF37' }}>★</span>
-                <p className="font-bold text-gray-100 text-base leading-snug">{service}</p>
+            <div 
+              key={idx} 
+              className="p-7 rounded-2xl flex flex-col justify-between space-y-4 transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-500/40 border border-zinc-800/80 backdrop-blur-lg bg-zinc-900/80 group"
+            >
+              <div className="space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 font-bold group-hover:bg-amber-500 group-hover:text-black transition-colors duration-300">
+                  0{idx + 1}
+                </div>
+                <h3 className="font-bold text-white text-lg group-hover:text-amber-400 transition-colors">{service.title}</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">{service.desc}</p>
               </div>
 
               <a
                 href="#contact"
-                className="w-full text-center text-xs font-bold py-2 rounded-lg transition duration-200 hover:opacity-90 flex items-center justify-center gap-1.5"
-                style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
+                className="w-full text-center text-xs font-bold uppercase tracking-wider py-2.5 rounded-lg transition duration-200 bg-amber-500/10 text-amber-400 hover:bg-amber-500 hover:text-black border border-amber-500/20 flex items-center justify-center gap-2"
               >
-                📅 Booking
+                Book Service ➔
               </a>
             </div>
           ))}
@@ -318,22 +364,27 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto" id="skills">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Skills & Technical Tools</h2>
+      <section className="relative z-10 py-20 md:py-28 px-6 max-w-6xl mx-auto border-t border-zinc-800/40" id="skills">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Skills & Technical Tools</h2>
           <p className="text-gray-400 text-sm">
-            Combining modern media software with strategic communication tools.
+            Combining modern media software with strategic communication tools for digital excellence.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {skillCategories.map((category, idx) => (
-            <div key={idx} className="p-6 rounded-xl transition duration-300 hover:-translate-y-1 border border-zinc-800/80 backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
-              <h3 className="text-lg font-bold mb-3" style={{ color: '#D4AF37' }}>{category.title}</h3>
-              <ul className="space-y-2">
+            <div 
+              key={idx} 
+              className="p-7 rounded-2xl transition duration-300 border border-zinc-800/80 backdrop-blur-lg bg-zinc-900/80 hover:border-zinc-700"
+            >
+              <h3 className="text-lg font-bold mb-4 text-amber-400 flex items-center gap-2">
+                <span>⚡</span> {category.title}
+              </h3>
+              <ul className="space-y-3">
                 {category.skills.map((skill, sIdx) => (
-                  <li key={sIdx} className="flex items-center gap-2 text-gray-300 text-sm">
-                    <span style={{ color: '#D4AF37' }}>✓</span> {skill}
+                  <li key={sIdx} className="flex items-center gap-3 text-gray-300 text-sm">
+                    <span className="text-amber-400 text-xs">✓</span> {skill}
                   </li>
                 ))}
               </ul>
@@ -342,22 +393,83 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Vision & Values */}
-      <section className="relative z-10 py-14 px-6 max-w-6xl mx-auto">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-          <div className="p-6 rounded-xl space-y-5 border border-zinc-800/80 backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
+      {/* Featured Projects & Real Screenshots Showcase */}
+      <section className="relative z-10 py-20 md:py-28 px-6 max-w-6xl mx-auto border-t border-zinc-800/40" id="projects">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Featured Media Vault & Projects</h2>
+          <p className="text-gray-400 text-sm">
+            Explore active media archives, production work, live YouTube sets, and source repositories.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {featuredProjects.map((project, idx) => (
+            <div 
+              key={idx}
+              className="p-8 rounded-2xl space-y-6 border border-zinc-800/80 backdrop-blur-lg bg-zinc-900/80 transition duration-300 hover:border-amber-500/40 flex flex-col justify-between group"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-2xl">
+                    {project.icon}
+                  </div>
+                  <div className="flex gap-2">
+                    {project.tags.map((tag, tIdx) => (
+                      <span key={tIdx} className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-md bg-zinc-800 text-gray-300 border border-zinc-700/50">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <h3 className="text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+
+              {/* Live Demo & GitHub Links */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-zinc-800/60">
+                <a 
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center py-2.5 px-4 font-bold text-xs uppercase tracking-wider rounded-xl bg-amber-500 text-black hover:bg-amber-400 transition duration-200 flex items-center justify-center gap-2"
+                >
+                  🔗 Live Demo
+                </a>
+                <a 
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center py-2.5 px-4 font-bold text-xs uppercase tracking-wider rounded-xl bg-zinc-800 text-gray-200 hover:bg-zinc-700 transition duration-200 border border-zinc-700/80 flex items-center justify-center gap-2"
+                >
+                  💻 GitHub Repo
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Vision, Values, & Hobbies */}
+      <section className="relative z-10 py-20 md:py-28 px-6 max-w-6xl mx-auto border-t border-zinc-800/40">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-8 rounded-2xl space-y-6 border border-zinc-800/80 backdrop-blur-lg bg-zinc-900/80">
             <div>
-              <h3 className="text-xl font-bold mb-2 text-white">Career Vision</h3>
+              <h3 className="text-2xl font-bold mb-3 text-white">Career Vision</h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                To become one of Africa's leading digital media innovators, empowering organizations and communities through impactful storytelling and technology.
+                To become one of Africa's leading digital media innovators, empowering organizations, brands, and communities through impactful storytelling, high-caliber journalism, and cutting-edge media technology.
               </p>
             </div>
             
-            <div>
-              <h4 className="text-base font-bold mb-3" style={{ color: '#D4AF37' }}>Core Values</h4>
+            <div className="space-y-3">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-amber-400">Core Guiding Values</h4>
               <div className="flex flex-wrap gap-2">
                 {coreValues.map((val, vIdx) => (
-                  <span key={vIdx} className="text-xs px-3 py-1.5 rounded-md text-gray-200 font-medium transition duration-200 hover:bg-amber-500/20 border border-zinc-700/50" style={{ backgroundColor: '#2A2A2A' }}>
+                  <span key={vIdx} className="text-xs px-3 py-1.5 rounded-lg text-gray-200 font-medium bg-zinc-800 border border-zinc-700/50 hover:border-amber-500/40 transition-colors">
                     {val}
                   </span>
                 ))}
@@ -365,15 +477,15 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="p-6 rounded-xl space-y-3 border border-zinc-800/80 backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
-            <h3 className="text-xl font-bold text-white">Hobbies & Interests</h3>
-            <p className="text-gray-400 text-xs mb-3">
-              Creative pursuits that fuel passion, inspiration, and community impact.
+          <div className="p-8 rounded-2xl space-y-4 border border-zinc-800/80 backdrop-blur-lg bg-zinc-900/80">
+            <h3 className="text-2xl font-bold text-white">Hobbies & Pursuits</h3>
+            <p className="text-gray-400 text-xs mb-2">
+              Creative activities that fuel passion, inspiration, research, and community impact.
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {hobbies.map((hobby, hIdx) => (
-                <li key={hIdx} className="flex items-center gap-2 text-gray-300 text-sm">
-                  <span style={{ color: '#D4AF37' }}>◆</span> {hobby}
+                <li key={hIdx} className="flex items-center gap-3 text-gray-300 text-sm">
+                  <span className="text-amber-400">◆</span> {hobby}
                 </li>
               ))}
             </ul>
@@ -381,69 +493,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Showcase */}
-      <section className="relative z-10 py-14 px-6 max-w-5xl mx-auto" id="projects">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Media Projects & Portfolio Vault</h2>
-          <p className="text-gray-400 text-sm">
-            Explore video reels, journalism features, DJ mixes, and raw media assets across Google Drive and YouTube.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-          
-          {/* Google Drive Vault */}
-          <div className="p-8 rounded-2xl text-center space-y-5 border border-zinc-800/80 transition duration-300 hover:border-amber-500/40 flex flex-col justify-between backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
-            <div className="space-y-4">
-              <div className="inline-block p-4 rounded-full bg-amber-500/10 border border-amber-500/20">
-                <span className="text-3xl">📂</span>
-              </div>
-              <h3 className="text-xl font-bold text-white">Google Drive Vault</h3>
-              <p className="text-gray-400 text-xs leading-relaxed">
-                Full video reels, high-res photo archives, journalism documentations, and raw media project files.
-              </p>
-            </div>
-            <a 
-              href={driveFolderLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-xs rounded-xl transition duration-300 hover:scale-105 mt-4"
-              style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
-            >
-              <span>Open Drive Portfolio</span> ➔
-            </a>
-          </div>
-
-          {/* YouTube Channel */}
-          <div className="p-8 rounded-2xl text-center space-y-5 border border-zinc-800/80 transition duration-300 hover:border-red-500/40 flex flex-col justify-between backdrop-blur-md" style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}>
-            <div className="space-y-4">
-              <div className="inline-block p-4 rounded-full bg-red-500/10 border border-red-500/20">
-                <span className="text-3xl">📺</span>
-              </div>
-              <h3 className="text-xl font-bold text-white">DJ Vyro 254 YouTube Channel</h3>
-              <p className="text-gray-400 text-xs leading-relaxed">
-                Watch DJ mixes, live Gospel sets, praise sessions, and video creative productions on YouTube.
-              </p>
-            </div>
-            <a 
-              href={youtubeLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-xs rounded-xl transition duration-300 hover:scale-105 text-white bg-red-600 hover:bg-red-500 mt-4"
-            >
-              <span>Subscribe & Watch Mixes</span> ➔
-            </a>
-          </div>
-
-        </div>
-      </section>
-
       {/* Support Hub Section */}
-      <section className="relative z-10 py-14 px-6 max-w-4xl mx-auto" id="support">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Support Hub & Client Care</h2>
+      <section className="relative z-10 py-20 md:py-28 px-6 max-w-4xl mx-auto border-t border-zinc-800/40" id="support">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Support Hub & Client Care</h2>
           <p className="text-gray-400 text-sm">
-            Everything you need to know about booking, project delivery, and working with Peter.
+            Everything you need to know about booking, deliverables, media files, and working together.
           </p>
         </div>
 
@@ -451,21 +506,21 @@ export default function Home() {
           {supportFaqs.map((faq, idx) => (
             <div 
               key={idx} 
-              className="rounded-xl overflow-hidden transition border border-zinc-800/80 backdrop-blur-md"
-              style={{ backgroundColor: 'rgba(20, 20, 20, 0.85)' }}
+              className="rounded-2xl overflow-hidden transition border border-zinc-800/80 backdrop-blur-lg bg-zinc-900/80"
             >
               <button
                 onClick={() => toggleFaq(idx)}
-                className="w-full text-left p-5 font-bold text-sm md:text-base flex justify-between items-center text-white hover:text-amber-400 transition"
+                className="w-full text-left p-6 font-bold text-base md:text-lg flex justify-between items-center text-white hover:text-amber-400 transition-colors"
+                aria-expanded={openFaq === idx}
               >
                 <span>{faq.question}</span>
-                <span className="text-amber-400 text-lg ml-4">
+                <span className="text-amber-400 text-xl ml-4 font-mono">
                   {openFaq === idx ? "−" : "+"}
                 </span>
               </button>
               
               {openFaq === idx && (
-                <div className="px-5 pb-5 text-gray-300 text-sm leading-relaxed border-t border-zinc-800/50 pt-3">
+                <div className="px-6 pb-6 text-gray-300 text-sm leading-relaxed border-t border-zinc-800/50 pt-4">
                   {faq.answer}
                 </div>
               )}
@@ -474,48 +529,85 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 py-16 text-center border-t border-zinc-900" style={{ backgroundColor: '#141414' }} id="contact">
-        <div className="max-w-4xl mx-auto px-6 space-y-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">Let's Work Together</h2>
-          <p className="text-gray-300 text-sm max-w-lg mx-auto leading-relaxed">
-            Have a project in mind or want to book services? Get in touch today.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
-            <a 
-              href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20inquire%20about%20booking%20a%20service.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3 font-bold rounded-lg shadow transition duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm bg-emerald-600 text-white hover:bg-emerald-500"
-            >
-              💬 WhatsApp
-            </a>
+      {/* Comprehensive Footer & Contact Section */}
+      <footer className="relative z-10 border-t border-zinc-800/80 bg-zinc-950 pt-20 pb-12" id="contact">
+        <div className="max-w-6xl mx-auto px-6 space-y-16">
+          <div className="text-center max-w-xl mx-auto space-y-4">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Let's Work Together</h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Have an upcoming project, event coverage, or content production inquiry? Get in touch today!
+            </p>
 
-            <a 
-              href="mailto:Obbayipeter050@gmail.com" 
-              className="w-full sm:w-auto px-6 py-3 font-bold rounded-lg shadow transition duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm"
-              style={{ backgroundColor: '#D4AF37', color: '#0B0B0B' }}
-            >
-              ✉️ Email Direct
-            </a>
-            
-            <a 
-              href="tel:0707537823" 
-              className="w-full sm:w-auto px-6 py-3 text-white font-semibold rounded-lg shadow transition duration-300 hover:bg-zinc-800 hover:scale-105 flex items-center justify-center gap-2 text-sm"
-              style={{ backgroundColor: '#262626' }}
-            >
-              📞 Call: 0707 537823
-            </a>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+              <a 
+                href={`https://wa.me/${whatsappNumber}?text=Hello%20Peter,%20I%20would%20like%20to%20inquire%20about%20booking%20a%20service.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-6 py-3.5 font-bold rounded-xl transition duration-300 hover:scale-105 flex items-center justify-center gap-2 text-xs uppercase tracking-wider bg-emerald-600 text-white hover:bg-emerald-500 shadow-lg shadow-emerald-600/10"
+              >
+                💬 Direct WhatsApp
+              </a>
+
+              <a 
+                href="mailto:Obbayipeter050@gmail.com" 
+                className="w-full sm:w-auto px-6 py-3.5 font-bold rounded-xl transition duration-300 hover:scale-105 flex items-center justify-center gap-2 text-xs uppercase tracking-wider bg-amber-500 text-black hover:bg-amber-400 shadow-lg shadow-amber-500/10"
+              >
+                ✉️ Send Email
+              </a>
+              
+              <a 
+                href="tel:0707537823" 
+                className="w-full sm:w-auto px-6 py-3.5 font-bold rounded-xl transition duration-300 hover:scale-105 flex items-center justify-center gap-2 text-xs uppercase tracking-wider bg-zinc-800 text-white hover:bg-zinc-700 border border-zinc-700/60"
+              >
+                📞 Call Direct
+              </a>
+            </div>
           </div>
 
-          <p className="text-xs text-gray-500 pt-10">
-            © {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved.
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-zinc-900 text-xs">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <Image src={peterLogo} alt="Peter Ken Logo" width={100} height={30} className="w-auto h-7 object-contain" />
+              </div>
+              <p className="text-gray-400 leading-relaxed">
+                Professional Media Production, Journalism, Videography, and Digital Strategy Solutions.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-bold text-amber-400 uppercase tracking-wider">Quick Navigation</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#about" className="hover:text-white transition">About Peter</a></li>
+                <li><a href="#services" className="hover:text-white transition">Core Services</a></li>
+                <li><a href="#projects" className="hover:text-white transition">Media Vault</a></li>
+                <li><a href="#support" className="hover:text-white transition">Support Hub</a></li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-bold text-amber-400 uppercase tracking-wider">Connect Channels</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href={youtubeLink} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">YouTube Channel</a></li>
+                <li><a href={driveFolderLink} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Google Drive Archive</a></li>
+                <li><a href="https://github.com/brianwaita88-sys/peter-portfolio" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">GitHub Profile</a></li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-bold text-amber-400 uppercase tracking-wider">Direct Contact</h4>
+              <p className="text-gray-400">Nairobi / Bungoma, Kenya</p>
+              <p className="text-gray-400">Email: Obbayipeter050@gmail.com</p>
+              <p className="text-gray-400">Phone: +254 707 537823</p>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-zinc-900 text-center text-xs text-gray-500">
+            © {new Date().getFullYear()} Peter Ken Obbayi. All rights reserved. Designed & developed with Next.js & Tailwind CSS.
+          </div>
         </div>
       </footer>
 
-      {/* Floating Bottom-Left AI Assistant */}
+      {/* Floating Bottom-Left AI Assistant Component */}
       <AiAssistant />
 
     </main>
